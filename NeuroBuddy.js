@@ -2,6 +2,9 @@ var screen = 0; //main menu
 let button;
 let img;
 
+function preload() {
+  img = loadImage('brain-1.png');
+}
 
 function setup() {
   createCanvas(1536, 707);
@@ -20,6 +23,7 @@ function draw() {
     reactionTime();
   }
 }
+
 function menuScreen(){
   background(104, 199, 255);
 
@@ -38,8 +42,10 @@ function menuScreen(){
 
   tint(104, 199, 255);
 
+  image(img, width / 6, 4 * height / 10, 250, 200);
   rect((2 * width) / 3 - 200, (13 * height) / 16 - 300, 400, 150);
 }
+
 function reactionTime(){
   //rectangle
   background(0,200,250);
@@ -57,11 +63,7 @@ function reactionTime(){
   text("ms",450,610);
   button.hide();
 }
-function mousePressed(){
-  if (screen == 0){
-    startGame();
-  }
-}
+
 function startGame(){
   screen = 1;
 }
