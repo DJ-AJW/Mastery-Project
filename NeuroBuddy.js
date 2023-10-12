@@ -6,7 +6,7 @@ let img;
 function setup() {
   createCanvas(1536, 707);
 
-  button = createButton("Rection Time!");
+  button = createButton("Reaction Time!");
   button.position((2 * width) / 3 - 200, (13 * height) / 16 - 300);
   button.size(400, 150);
   button.mousePressed(startGame);
