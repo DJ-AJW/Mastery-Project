@@ -55,7 +55,7 @@ function reactionTime(){
   rect(200,550,350,100);
   fill(255);
   text("ms",450,610);
-  button.style.display = 'none';
+  button.hide();
 }
 function mousePressed(){
   if (screen == 0){
