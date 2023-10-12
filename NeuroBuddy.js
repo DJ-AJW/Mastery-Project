@@ -6,7 +6,7 @@ let img;
 function setup() {
   createCanvas(1536, 707);
 
-  button = createButton("Start!");
+  button = createButton("Rection Time!");
   button.position((2 * width) / 3 - 200, (13 * height) / 16 - 300);
   button.size(400, 150);
   button.mousePressed(startGame);
@@ -27,7 +27,7 @@ function menuScreen(){
   textStyle(BOLD);
   textAlign(CENTER);
   textSize(100);
-  text("NeuroBuddy", (2 * width) / 3, height / 2);
+  text("NeuroBuddy", (2 * width) / 3, height/9.5);
 
   textSize(32);
   text(
