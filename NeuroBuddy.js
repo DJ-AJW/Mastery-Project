@@ -96,17 +96,6 @@ function CPSGame(){
     background(0, 200, 250);
     //rectangle
     fill(0,0,255);
-<<<<<<< Updated upstream
-    rect(300,150,1068,300);
-    rect(width/1.6,height/1.6,100,60);
-    rect(width/1.6,height/1.4,100,60);
-    //text
-    textSize(38);
-    fill(255);
-    text("Click On The Blue Box As Fast As Possible!",width/1.75,height/9)
-    text("Clicks: ", width/1.8,height/1.5)
-    text("Time : ",width/1.8,height/1.3)
-=======
     rect(250,150,1068,300);
     rect(width/2,height/1.18,100,60);
     rect(width/2,height/1.4,100,60);
@@ -116,7 +105,6 @@ function CPSGame(){
     text("Click On The Blue Box As Fast As Possible!",width/2,height/9)
     text("Clicks: ", width/2.2,height/1.3)
     text("Time : ",width/2.2,height/1.1)
->>>>>>> Stashed changes
 
 }
 
