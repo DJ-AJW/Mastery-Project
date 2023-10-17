@@ -8,6 +8,7 @@ let button1;
 let button2;
 let button3;
 let img;
+let Rect;
 
 function preload() {
   img = loadImage('brain-1.png');
@@ -36,6 +37,7 @@ function setup() {
   button3.position(width - 300, height - 150);
   button3.size(100, 150);
   button3.mousePressed(startLineTracing);
+
 }
 
 function draw() {
@@ -76,35 +78,40 @@ function menuScreen(){
   }
 
 function reactionTime(){
-  //rectangle
-  background(0,200,250);
-  fill(0,0,255);
-  rect(width/7,200,500,300);
-  //text
-  fill(255);
-  textFont("Arial");
-  textSize(38);
-  text("Click The Blue Box Once It Turns Green!",width/4,height/7);
-  //word box
-  noFill();
-  rect(200,550,350,100);
-  fill(255);
-  text("ms",450,610);
+
+  
+
+
+  Rect = new Car();
+  frameRate(60);
+
+  background(0, 200, 250);
+  
+  textSize(40);
+  fill(0, 102, 153);
+  text("Click the Box as Fast as Possible!", 500, 90);
+  
+  
+  
+  if(frameCount > 30){
+      fill('green');
+    }
+  Rect.show();
 }
 
 function CPSGame(){
     background(0, 200, 250);
     //rectangle
     fill(0,0,255);
-    rect(250,150,1068,300);
-    rect(width/2,height/1.18,100,60);
-    rect(width/2,height/1.4,100,60);
+    rect(300,150,1068,300);
+    rect(width/1.6,height/1.6,100,60);
+    rect(width/1.6,height/1.4,100,60);
     //text
     textSize(38);
     fill(255);
-    text("Click On The Blue Box As Fast As Possible!",width/2,height/9)
-    text("Clicks: ", width/2.2,height/1.3)
-    text("Time : ",width/2.2,height/1.1)
+    text("Click On The Blue Box As Fast As Possible!",width/1.75,height/9)
+    text("Clicks: ", width/1.8,height/1.5)
+    text("Time : ",width/1.8,height/1.3)
 
 }
 
@@ -210,3 +217,13 @@ let positions1 = [
   [1054, 250],
   
 ]
+class Car {
+  constructor()
+  {
+    this.xPos = width/3.75;
+    this.yPos = height/5;
+  }
+  show() {
+    rect(this.xPos, this.yPos, 800, 400)
+  }
+}
