@@ -93,20 +93,19 @@ function reactionTime(){
 }
 
 function CPSGame(){
-  //rectangle
-  background(0,200,250);
-  fill(0,0,255);
-  rect(width/2,700,500,300);
-  //text
-  fill(255);
-  textFont("Arial");
-  textSize(38);
-  text("Click As Fast As You Can!",width/4,height/7);
-  //word box
-  noFill();
-  rect(200,550,350,100);
-  fill(255);
-  text("ms",450,610);
+    background(0, 200, 250);
+    //rectangle
+    fill(0,0,255);
+    rect(300,150,1068,300);
+    rect(windowWidth/1.6,windowHeight/1.6,100,60);
+    rect(windowWidth/1.6,windowHeight/1.4,100,60);
+    //text
+    textSize(38);
+    fill(255);
+    text("Click On The Blue Box As Fast As Possible!",windowWidth/1.75,windowHeight/9)
+    text("Clicks: ", windowWidth/1.8,windowHeight/1.5)
+    text("Time : ",windowWidth/1.8,windowHeight/1.3)
+
 }
 
 function LineTracing(){
