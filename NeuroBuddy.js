@@ -73,7 +73,7 @@ function menuScreen(){
 
   image(img, width / 6, 4 * height / 10, 250, 200);
   rect((2 * width) / 3 - 200, (13 * height) / 16 - 300, 400, 150);
-}
+  }
 
 function reactionTime(){
   //rectangle
@@ -93,20 +93,19 @@ function reactionTime(){
 }
 
 function CPSGame(){
-  //rectangle
-  background(0,200,250);
-  fill(0,0,255);
-  rect(width/2,700,500,300);
-  //text
-  fill(255);
-  textFont("Arial");
-  textSize(38);
-  text("Click As Fast As You Can!",width/4,height/7);
-  //word box
-  noFill();
-  rect(200,550,350,100);
-  fill(255);
-  text("ms",450,610);
+    background(0, 200, 250);
+    //rectangle
+    fill(0,0,255);
+    rect(300,150,1068,300);
+    rect(width/1.6,height/1.6,100,60);
+    rect(width/1.6,height/1.4,100,60);
+    //text
+    textSize(38);
+    fill(255);
+    text("Click On The Blue Box As Fast As Possible!",width/1.75,height/9)
+    text("Clicks: ", width/1.8,height/1.5)
+    text("Time : ",width/1.8,height/1.3)
+
 }
 
 function LineTracing(){
