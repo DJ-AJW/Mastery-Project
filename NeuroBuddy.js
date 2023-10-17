@@ -110,20 +110,31 @@ function CPSGame(){
 }
 
 function LineTracing(){
-  //rectangle
-  background(0,200,250);
-  fill(0,0,255);
-  rect(width/7,200,500,300);
-  //text
-  fill(255);
-  textFont("Arial");
-  textSize(38);
-  text("Trace The Line!",width/4,height/7);
-  //word box
-  noFill();
-  rect(200,550,350,100);
-  fill(255);
-  text("ms",450,610);
+  
+  background(104,199,255);
+  
+  textSize(32)
+  textAlign(CENTER, TOP);
+  fill(0,75,132);
+  text("Line Tracing", 0, 12, width);
+  
+  textSize(20);
+  textAlign(CENTER, TOP);
+  text("Instructions: Trace the circle across the generated line to the designated spot",         0, 50, width);
+  
+  rect(384, 100, 768, 453);
+  if (frameCount % 10 == 0 ) {
+    if (drawn < positions1.length) {
+      drawn++;
+    }
+  }
+  
+  for(let i = 0; i < drawn; i++) {
+    fill(104,199,255);
+    ellipse(positions1[i][0], positions1[i][1], 10, 10);
+  }
+  
+  print(drawn);
 }
 
 function startMenuScreen(){
@@ -145,3 +156,58 @@ function startLineTracing(){
   screen = 3;
   button0.show();
 }
+
+let drawn = 0;
+let positions1 = [
+  [434, 150],
+  [444, 160],
+  [454, 170],
+  [464, 180],
+  [474, 190],
+  [484, 200],
+  [494, 210],
+  [504, 220],
+  [514, 230],
+  [524, 240],
+  [544, 240],
+  [564, 240],
+  [584, 240],
+  [604, 240],
+  [624, 240],
+  [644, 240],
+  [664, 240],
+  [684, 240],
+  [704, 240],
+    [704, 240],
+  [714, 230],
+  [724, 220],
+  [734, 210],
+  [744, 200],
+  [754, 190],
+  [764, 180],
+  [774, 170],
+  [784, 160],
+  [794, 150],
+  [804, 160],
+  [814, 170],
+  [824, 180],
+  [834, 190],
+  [844, 200],
+  [854, 210],
+  [864, 220],
+  [874, 230],
+  [884, 240],
+  [894, 250],
+  [904, 260],
+  [914, 270],
+    [924, 280],
+  [944, 280],
+  [964, 280],
+  [984, 280],
+  [994, 270],
+  [1004, 260],
+  [1014, 250],
+  [1034, 250],
+  [1054, 250],
+  
+]
