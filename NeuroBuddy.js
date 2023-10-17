@@ -78,6 +78,7 @@ function menuScreen(){
   }
 
 function reactionTime(){
+<<<<<<< Updated upstream
 
   
 
@@ -97,15 +98,38 @@ function reactionTime(){
       fill('green');
     }
   Rect.show();
+=======
+  //rectangle
+  background(104,199,255);
+  fill(0, 75, 132);
+  rect(500,200,500,300);
+  //text
+  fill(255);
+  textFont("Arial");
+  textSize(38);
+  text("Click The Blue Box Once It Turns Green!",width/2,height/9);
+  //word box
+  fill(0,75,132);
+  rect(600,550,350,100);
+  fill(255);
+  text("ms",900,610);
+>>>>>>> Stashed changes
 }
 
 function CPSGame(){
-    background(0, 200, 250);
+    background(104,199,255);
     //rectangle
+<<<<<<< Updated upstream
     fill(0,0,255);
     rect(300,150,1068,300);
     rect(width/1.6,height/1.6,100,60);
     rect(width/1.6,height/1.4,100,60);
+=======
+    fill(0, 75, 132);
+    rect(250,150,1068,300);
+    rect(width/2,height/1.18,100,60);
+    rect(width/2,height/1.4,100,60);
+>>>>>>> Stashed changes
     //text
     textSize(38);
     fill(255);
