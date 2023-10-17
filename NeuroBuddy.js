@@ -3,6 +3,7 @@
 //screen = 3 line tracing game
 
 var screen = 0; //main menu
+let button0;
 let button1;
 let button2;
 let button3;
@@ -15,18 +16,24 @@ function preload() {
 function setup() {
   createCanvas(1536, 707);
 
+  button0 = createButton("Main Menu!");
+  button0.position(width - 400, height - 150);
+  button0.size(100, 150);
+  button0.mousePressed(startMenuScreen);
+  button0.hide();
+
   button1 = createButton("Reaction Time!");
-  button1.position((2 * width) / 3 - 200, (13 * height) / 16 - 300);
+  button1.position(width - 100, height - 150);
   button1.size(100, 150);
   button1.mousePressed(startReactionTime);
 
   button2 = createButton("CPS Game!");
-  button2.position((2 * width) / 3 - 100, (13 * height) / 16 - 300);
+  button2.position(width - 200, height - 150);
   button2.size(100, 150);
   button2.mousePressed(startCPSGame);
 
   button3 = createButton("Line Tracing Game!");
-  button3.position((2 * width) / 3, (13 * height) / 16 - 300);
+  button3.position(width - 300, height - 150);
   button3.size(100, 150);
   button3.mousePressed(startLineTracing);
 }
@@ -89,7 +96,7 @@ function CPSGame(){
   //rectangle
   background(0,200,250);
   fill(0,0,255);
-  rect(width/7,200,500,300);
+  rect(width/2,700,500,300);
   //text
   fill(255);
   textFont("Arial");
@@ -119,17 +126,22 @@ function LineTracing(){
   text("ms",450,610);
 }
 
+function startMenuScreen(){
+  screen = 0;
+  button0.hide();
+}
+
 function startReactionTime(){
   screen = 1;
-  button1.hide();
+  button0.show();
 }
 
 function startCPSGame(){
   screen = 2;
-  button2.hide();
+  button0.show();
 }
 
 function startLineTracing(){
   screen = 3;
-  button3.hide();
+  button0.show();
 }
