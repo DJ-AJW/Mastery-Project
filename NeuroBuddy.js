@@ -84,8 +84,8 @@ function reactionTime(){
   background(104,199,255);  
   
   textSize(40);
-  fill(0, 102, 153);
-  text("Click The Blue Box Once It Turns Green!", 500, 90);
+  fill(255);
+  text("Click The Blue Box Once It Turns Green!", 800, 90);
   
   if(frameCount > 30){
       fill('green');
