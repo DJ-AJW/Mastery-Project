@@ -84,8 +84,8 @@ function reactionTime(){
   background(104,199,255);  
   
   textSize(40);
-  fill(255);
-  text("Click The Blue Box Once It Turns Green!", 800, 90);
+  fill(0,75,132);
+  text("Click The Blue Box Once It Turns Green!", 800, height/9);
   
   if(frameCount > 30){
       fill('green');
@@ -99,7 +99,7 @@ function CPSGame(){
   fill(0, 75, 132);
   rect(500,200,500,300);
   //text
-  fill(255);
+  fill(0,75,132);
   textFont("Arial");
   textSize(38);
   text("Click Box As Fast As Possible!",width/2,height/9);
