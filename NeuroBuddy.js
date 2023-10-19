@@ -102,23 +102,27 @@ function reactionTime(){
 
 function CPSGame(){
   //rectangle
-  background(104,199,255);
+  background(104, 199, 255);
   fill(0, 75, 132);
-  rect(500,200,500,300);
+  rect(500, 200, 500, 300);
   //text
-  fill(0,75,132);
+  fill(0, 75, 132);
   textFont("Arial");
   textSize(38);
   text("Click Box As Fast As Possible!",width/2,height/9);
   //update clicks
-if (cPSButton.pressed){
-  clicks++
-}
+  function incrementClicks(){
+    clicks++;
+    updateCPS();
+  }
+  cPSButton.mouseClicked(incrementClicks);  
   //word box
   fill(0,75,132);
-  rect(600,550,350,100);
+  rect(600, 550, 350, 100);
   fill(255);
-  text("CPS: " + clicks,775,615);
+  function updateCPS(){
+    text("CPS: " + clicks, 775, 615);
+  }
 }
 
 function LineTracing(){
