@@ -133,16 +133,14 @@ function CPSGame(){
   //update clicks
   function incrementClicks(){
     clicks++;
-    updateCPS();
   }
   cPSButton.mouseClicked(incrementClicks);  
   //word box
   fill(0,75,132);
   rect(600, 550, 350, 100);
   fill(255);
-  function updateCPS(){
-    text("CPS: " + clicks, 775, 615);
-  }
+  text("CPS: " + clicks, 775, 615);
+  
 }
 
 function LineTracing(){
