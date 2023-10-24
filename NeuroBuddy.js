@@ -9,6 +9,10 @@ let button2;
 let button3;
 let img;
 let Rect;
+var startTime; //the beginning of our clock timer
+var end = false;
+
+
 
 function preload() {
   img = loadImage('brain-1.png');
@@ -41,6 +45,9 @@ function setup() {
 }
 
 function draw() {
+
+  
+
   if (screen == 0){
     menuScreen();
   }
@@ -78,19 +85,38 @@ function menuScreen(){
   }
 
 function reactionTime(){
+  if (end) {//after the timer has started AND when it ends...
+    background(23, 245, 220);
+    drawSquare();
+    text("Time's Up!", 55, 50);
+    if (mouseIsPressed) {//after Time is Up,...
+      redraw();//redraw the canvas and start everything over!
+    }
+  }
   Rect = new Car();
-  frameRate(60);
-
+ 
+  
+  
+  
   background(104,199,255);  
   
   textSize(40);
   fill(0,75,132);
   text("Click The Blue Box Once It Turns Green!", 800, height/9);
   
-  if(frameCount > 30){
-      fill('green');
-    }
+ 
   Rect.show();
+  
+  end = false;//lets our code know the countdown hasn't ended yet
+  background(23, 245, 220);
+  fill(0);
+  text("Current second: \n" + timer(), width/2-25, height/2);
+
+  if (mouseIsPressed) {
+    startTime = millis(); //start our timer and count up in milliseconds
+    //1000 milliseconds = 1 second.
+  }
+  
 }
 
 function CPSGame(){
@@ -222,4 +248,18 @@ class Car {
   show() {
     rect(this.xPos, this.yPos, 800, 400)
   }
+}
+
+function timer() {
+  /* this math takes the current second
+  and subtracts our very first second (when the timer started)
+  from it in order to keep track of time*/
+
+  var time = int((millis() - startTime) / 1000);
+
+  //If the result of the above math is 30...
+  if (time > 30) {
+    end = true; //Signal the rest of the code to end the timer
+  }
+  return time; //stop running this function once the timer reaches 30
 }
