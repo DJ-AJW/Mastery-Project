@@ -7,12 +7,17 @@ let button0;
 let button1;
 let button2;
 let button3;
+let cPSButton;
 let img;
 let Rect;
+<<<<<<< HEAD
 var startTime; //the beginning of our clock timer
 var end = false;
 
 
+=======
+let clicks = 0;
+>>>>>>> a3e3193e6444604ae3c0d1fe4d7e2dcdbbf983d6
 
 function preload() {
   img = loadImage('brain-1.png');
@@ -41,6 +46,11 @@ function setup() {
   button3.position(width - 300, height - 150);
   button3.size(100, 150);
   button3.mousePressed(startLineTracing);
+
+  cPSButton = createButton("Click Me!");
+  cPSButton.position(500,200);
+  cPSButton.size(500,300);
+  cPSButton.hide();
 
 }
 
@@ -121,20 +131,27 @@ function reactionTime(){
 
 function CPSGame(){
   //rectangle
-  background(104,199,255);
+  background(104, 199, 255);
   fill(0, 75, 132);
-  rect(500,200,500,300);
+  rect(500, 200, 500, 300);
   //text
-  fill(0,75,132);
+  fill(0, 75, 132);
   textFont("Arial");
   textSize(38);
   text("Click Box As Fast As Possible!",width/2,height/9);
+  //update clicks
+  function incrementClicks(){
+    clicks++;
+    updateCPS();
+  }
+  cPSButton.mouseClicked(incrementClicks);  
   //word box
   fill(0,75,132);
-  rect(600,550,350,100);
+  rect(600, 550, 350, 100);
   fill(255);
-  text("ms",900,610);
-
+  function updateCPS(){
+    text("CPS: " + clicks, 775, 615);
+  }
 }
 
 function LineTracing(){
@@ -168,21 +185,25 @@ function LineTracing(){
 function startMenuScreen(){
   screen = 0;
   button0.hide();
+  cPSButton.hide();
 }
 
 function startReactionTime(){
   screen = 1;
   button0.show();
+  cPSButton.hide();
 }
 
 function startCPSGame(){
   screen = 2;
   button0.show();
+  cPSButton.show();
 }
 
 function startLineTracing(){
   screen = 3;
   button0.show();
+  cPSButton.hide();
 }
 
 let drawn = 0;
@@ -206,7 +227,7 @@ let positions1 = [
   [664, 240],
   [684, 240],
   [704, 240],
-    [704, 240],
+  [704, 240],
   [714, 230],
   [724, 220],
   [734, 210],
@@ -228,7 +249,7 @@ let positions1 = [
   [894, 250],
   [904, 260],
   [914, 270],
-    [924, 280],
+  [924, 280],
   [944, 280],
   [964, 280],
   [984, 280],
