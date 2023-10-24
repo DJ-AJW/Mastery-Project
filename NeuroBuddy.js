@@ -135,7 +135,7 @@ function CPSGame(){
     startTime = millis() / 1000; //start our timer and count up in milliseconds
     //1000 milliseconds = 1 second.
   }
-  if (timer() > 5) {
+  if (timer() > 5 ) {
     text("CPS: " + clicks / 5, 775, 665);
     cPSButton.hide();
   }
