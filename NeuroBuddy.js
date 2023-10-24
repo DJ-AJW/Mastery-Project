@@ -10,14 +10,11 @@ let button3;
 let cPSButton;
 let img;
 let Rect;
-<<<<<<< HEAD
 var startTime; //the beginning of our clock timer
 var end = false;
 
 
-=======
 let clicks = 0;
->>>>>>> a3e3193e6444604ae3c0d1fe4d7e2dcdbbf983d6
 
 function preload() {
   img = loadImage('brain-1.png');
@@ -95,14 +92,6 @@ function menuScreen(){
   }
 
 function reactionTime(){
-  if (end) {//after the timer has started AND when it ends...
-    background(23, 245, 220);
-    drawSquare();
-    text("Time's Up!", 55, 50);
-    if (mouseIsPressed) {//after Time is Up,...
-      redraw();//redraw the canvas and start everything over!
-    }
-  }
   Rect = new Car();
  
   
@@ -114,13 +103,15 @@ function reactionTime(){
   fill(0,75,132);
   text("Click The Blue Box Once It Turns Green!", 800, height/9);
   
+  if (timer() > 2) {
+    fill('green');
+  }
  
   Rect.show();
+
+  
   
   end = false;//lets our code know the countdown hasn't ended yet
-  background(23, 245, 220);
-  fill(0);
-  text("Current second: \n" + timer(), width/2-25, height/2);
 
   if (mouseIsPressed) {
     startTime = millis(); //start our timer and count up in milliseconds
@@ -279,8 +270,5 @@ function timer() {
   var time = int((millis() - startTime) / 1000);
 
   //If the result of the above math is 30...
-  if (time > 30) {
-    end = true; //Signal the rest of the code to end the timer
-  }
   return time; //stop running this function once the timer reaches 30
 }
