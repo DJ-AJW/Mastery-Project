@@ -73,19 +73,13 @@ function menuScreen(){
   textStyle(BOLD);
   textAlign(CENTER);
   textSize(100);
-  text("NeuroBuddy", (2 * width) / 3, height/9.5);
+  text("NeuroBuddy", (2 * width) / 3, height/5);
 
   textSize(32);
-  text(
-    "Assisting your brain in the recovery\n process",
-    (2 * width) / 3,
-    (3 * height) / 4
-  );
-
+  text("Assisting your brain in the recovery\n process", (2 * width) / 3, (3 * height) / 8);
   tint(104, 199, 255);
 
   image(img, width / 6, 4 * height / 10, 250, 200);
-  rect((2 * width) / 3 - 200, (13 * height) / 16 - 300, 400, 150);
   }
 
 function reactionTime(){
@@ -136,7 +130,7 @@ function CPSGame(){
     //1000 milliseconds = 1 second.
   }
   if (timer() > 5 ) {
-    text("CPS: " + clicks / 5, 775, 665);
+    text("CPS: " + clicks / 5, 775, 365);
     cPSButton.hide();
   }
 }
