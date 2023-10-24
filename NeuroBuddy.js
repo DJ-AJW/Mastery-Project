@@ -52,9 +52,6 @@ function setup() {
 }
 
 function draw() {
-
-  
-
   if (screen == 0){
     menuScreen();
   }
@@ -93,10 +90,6 @@ function menuScreen(){
 
 function reactionTime(){
   Rect = new Car();
- 
-  
-  
-  
   background(104,199,255);  
   
   textSize(40);
@@ -108,8 +101,6 @@ function reactionTime(){
   }
  
   Rect.show();
-
-  
   
   end = false;//lets our code know the countdown hasn't ended yet
 
@@ -129,7 +120,7 @@ function CPSGame(){
   fill(0, 75, 132);
   textFont("Arial");
   textSize(38);
-  text("Click Box As Fast As Possible!",width/2,height/9);
+  text("Click Box As Fast As Possible!", width / 2, height / 9);
   //update clicks
   function incrementClicks(){
     clicks++;
@@ -139,8 +130,14 @@ function CPSGame(){
   fill(0,75,132);
   rect(600, 550, 350, 100);
   fill(255);
-  text("CPS: " + clicks, 775, 615);
-  
+  text("Clicks: " + clicks, 775, 615);
+  if (clicks == 1) {
+    startTime = millis() / 1000; //start our timer and count up in milliseconds
+    //1000 milliseconds = 1 second.
+  }
+  if (timer() > 5) {
+    text("CPS: " + clicks / 5, 775, 665);
+  }
 }
 
 function LineTracing(){
@@ -187,6 +184,7 @@ function startCPSGame(){
   screen = 2;
   button0.show();
   cPSButton.show();
+  clicks = 0;   
 }
 
 function startLineTracing(){
