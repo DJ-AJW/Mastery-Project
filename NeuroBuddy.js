@@ -122,14 +122,14 @@ function CPSGame(){
   cPSButton.mouseClicked(incrementClicks);  
   //word box
   fill(0,75,132);
+  text("Timer: " + timer(), 400, 365);
   rect(600, 550, 350, 100);
   fill(255);
   text("Clicks: " + clicks, 775, 615);
-  if (clicks > 0) {
-    startTime = millis() / 1000; //start our timer and count up in milliseconds
-    //1000 milliseconds = 1 second.
+  if (clicks == 1) {
+    startTime = millis();
   }
-  if (timer() > 5 ) {
+  if (timer() >= 5 ) {
     text("CPS: " + clicks / 5, 775, 365);
     cPSButton.hide();
   }
@@ -180,6 +180,7 @@ function startCPSGame(){
   button0.show();
   cPSButton.show();
   clicks = 0;
+  
 }
 
 function startLineTracing(){
