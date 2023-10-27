@@ -13,6 +13,15 @@ let Rect;
 var startTime; //the beginning of our clock timer
 var end = false;
 
+//reaction time global variables
+let shapeX = 434;
+let shapeY = 150;
+const radius = 25;
+const diameter = radius * 2;
+let shapeMove = false;
+let mouseDraw = false;
+let pts = []
+let strokeCol
 
 let clicks = 0;
 
@@ -136,7 +145,6 @@ function CPSGame(){
 }
 
 function LineTracing(){
-  
   background(104,199,255);
   
   textSize(32)
@@ -149,6 +157,7 @@ function LineTracing(){
   text("Instructions: Trace the circle across the generated line to the designated spot",         0, 50, width);
   
   rect(384, 100, 768, 453);
+
   if (frameCount % 10 == 0 ) {
     if (drawn < positions1.length) {
       drawn++;
@@ -160,7 +169,51 @@ function LineTracing(){
     ellipse(positions1[i][0], positions1[i][1], 10, 10);
   }
   
-  print(drawn);
+  fill(104,199,255)
+  circle(shapeX, shapeY, diameter);
+
+  if(shapeMove) {
+    noFill()
+  stroke(strokeCol)
+  strokeWeight(20)
+  beginShape()
+  for (let i = 0; i < pts.length; i++) {
+    const pt = pts[i]
+    if (i === 0) curveVertex(pt.x, pt.y) // repeat first vertex
+    curveVertex(pt.x, pt.y)
+    if (i === pts.length - 1) curveVertex(pt.x, pt.y) // repeat last vertex
+  }
+  endShape()
+  }
+  }
+
+
+function mousePressed () {
+  let d = dist(mouseX, mouseY, shapeX, shapeY)
+  if (d < radius) {
+    shapeMove = true;
+  }
+  else {
+    shapeMove = false;
+  }
+
+}
+
+function mouseReleased() {
+  shapeMove = false;
+  shapeX = 434;
+  shapeY = 150;
+  pts = []
+  pts.push(new p5.Vector(mouseX, mouseY))
+  strokeCol = color(random(255), random(255), random(255))
+}
+
+function mouseDragged() {
+  if(shapeMove) {
+    shapeX = mouseX
+    shapeY = mouseY
+    pts.push(new p5.Vector(mouseX, mouseY))
+  }
 }
 
 function startMenuScreen(){
@@ -243,6 +296,7 @@ let positions1 = [
   [1054, 250],
   
 ]
+
 class Car {
   constructor()
   {
