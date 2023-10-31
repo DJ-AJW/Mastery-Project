@@ -278,7 +278,7 @@ function startLineTracing(){
   screen = 3;
   button0.show();
   cPSButton.hide();
-  resetSketch.hide();
+  bigButton.hide();
   //timeAllowedInput.hide();
   //timeAllowedButton.hide();
 }
