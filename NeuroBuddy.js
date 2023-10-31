@@ -8,6 +8,8 @@ let button1;
 let button2;
 let button3;
 let cPSButton;
+//let timeAllowedInput;
+//let timeAllowedButton;
 let img;
 let Rect;
 var startTime; //the beginning of our clock timer
@@ -59,7 +61,11 @@ function setup() {
   cPSButton.position(500,200);
   cPSButton.size(500,300);
   cPSButton.hide();
-
+  
+  //timeAllowedInput = createInput();
+  //timeAllowedButton = createButton('Change Time!');
+  //timeAllowedInput.position(width / 2, 2 * height / 9);
+  //timeAllowedButton.position((width / 2) - 100, 2 * height / 9);
 }
 
 function draw() {
@@ -117,6 +123,11 @@ function reactionTime(){
 }
 
 function CPSGame(){
+  let timeAllowed = 5;
+  //if (timeAllowedButton.mouseClicked()) {
+  //  timeAllowed = timeAllowedInput.value();
+  //}
+
   //rectangle
   background(104, 199, 255);
   fill(0, 75, 132);
@@ -141,8 +152,8 @@ function CPSGame(){
   if (clicks == 0) {
     startTime = millis();
   }
-  if (timer() >= 5 ) {
-    text("CPS: " + clicks / 5, 775, 365);
+  if (timer() >= timeAllowed ) {
+    text("CPS: " + clicks / timeAllowed, 775, 365);
     cPSButton.hide();
     end = true;
   }
@@ -224,18 +235,24 @@ function startMenuScreen(){
   screen = 0;
   button0.hide();
   cPSButton.hide();
+  //timeAllowedInput.hide();
+  //timeAllowedButton.hide();
 }
 
 function startReactionTime(){
   screen = 1;
   button0.show();
   cPSButton.hide();
+  //timeAllowedInput.hide();
+  //timeAllowedButton.hide();
 }
 
 function startCPSGame(){
   screen = 2;
   button0.show();
   cPSButton.show();
+  //timeAllowedInput.show();
+  //timeAllowedButton.show();
   clicks = 0;
   
 }
@@ -244,6 +261,8 @@ function startLineTracing(){
   screen = 3;
   button0.show();
   cPSButton.hide();
+  //timeAllowedInput.hide();
+  //timeAllowedButton.hide();
 }
 
 let drawn = 0;
