@@ -12,6 +12,7 @@ let img;
 let Rect;
 var startTime; //the beginning of our clock timer
 var end = false;
+let hitmarker;
 
 //reaction time global variables
 let shapeX = 434;
@@ -20,12 +21,13 @@ const radius = 25;
 const diameter = radius * 2;
 let shapeMove = false;
 let mouseDraw = false;
-let pts = []
-let strokeCol
+let pts = [];
+let strokeCol;
 
 let clicks = 0;
 
 function preload() {
+  hitmarker = loadSound('hitmarker.mp3');
   img = loadImage('brain-1.png');
 }
 
@@ -127,22 +129,24 @@ function CPSGame(){
   //update clicks
   function incrementClicks(){
     clicks++;
+    hitmarker.play();
   }
-  cPSButton.mouseClicked(incrementClicks);  
+  cPSButton.mouseClicked(incrementClicks);
   //word box
   fill(0,75,132);
   text("Timer: " + timer(), 400, 365);
   rect(600, 550, 350, 100);
   fill(255);
   text("Clicks: " + clicks, 775, 615);
-  if (clicks == 1) {
+  if (clicks == 0) {
     startTime = millis();
   }
   if (timer() >= 5 ) {
     text("CPS: " + clicks / 5, 775, 365);
     cPSButton.hide();
+    end = true;
   }
-}
+  }
 
 function LineTracing(){
   background(104,199,255);
@@ -316,5 +320,9 @@ function timer() {
   var time = int((millis() - startTime) / 1000);
 
   //If the result of the above math is 30...
+  if (end) {
+    time = 0;
+    end = false;
+  }
   return time; //stop running this function once the timer reaches 30
 }
