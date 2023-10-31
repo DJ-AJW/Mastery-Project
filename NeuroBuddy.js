@@ -188,10 +188,10 @@ function LineTracing(){
   circle(shapeX, shapeY, diameter);
 
   if(shapeMove) {
-    noFill()
+  noFill()
   stroke(strokeCol)
   strokeWeight(20)
-  beginShape()
+  // beginShape()
   for (let i = 0; i < pts.length; i++) {
     const pt = pts[i]
     if (i === 0) curveVertex(pt.x, pt.y) // repeat first vertex
