@@ -25,6 +25,18 @@ let mouseDraw = false;
 let pts = []
 let strokeCol
 
+let bigButton;
+var boxSize=400;//size of the button to press
+var rBox=150;gBox=150;bBox=255; //starting button color
+var timeStart, timeCurrent, elapsedTime, randomTime; //timing variables
+var resultTimes=[]; //array that holds the results of the reaction tests
+var resultText; 
+var textInstructions; //current instructions
+var startWording="WAIT!" //language printed when time to start
+var waitWording="GO!" 
+var waitForGreenTimeout, waitForRedTimeout; //vars to handle the timeouts
+
+
 let clicks = 0;
 
 function preload() {
@@ -59,6 +71,9 @@ function setup() {
   cPSButton.position(500,200);
   cPSButton.size(500,300);
   cPSButton.hide();
+
+  resetSketch();
+  bigButton.hide();
   
   //timeAllowedInput = createInput();
   //timeAllowedButton = createButton('Change Time!');
@@ -100,16 +115,19 @@ function menuScreen(){
 function reactionTime(){
   Rect = new Car();
   background(104,199,255);  
+
+  bigButton.position(width/3.75, height/5); //redraws the button
+  bigButton.html(textInstructions); //puts the correct text in the button
+  let col=color(rBox,gBox,bBox); //sets the button's color
+  bigButton.style('background-color', col);
+  //textSize(14);
+  //text("Reaction Time Tester, Mode C",10,15);
+  text("Your reaction times in milliseconds: \n \n"+resultTimes,10,230,250,420);
   
   textSize(40);
   fill(0,75,132);
   text("Click The Blue Box Once It Turns Green!", 800, height/9);
   
-  if (timer() > 2) {
-    fill('green');
-  }
- 
-  Rect.show();
   
   end = false;//lets our code know the countdown hasn't ended yet
 
@@ -231,6 +249,7 @@ function startMenuScreen(){
   screen = 0;
   button0.hide();
   cPSButton.hide();
+  bigButton.hide();
   //timeAllowedInput.hide();
   //timeAllowedButton.hide();
 }
@@ -239,6 +258,7 @@ function startReactionTime(){
   screen = 1;
   button0.show();
   cPSButton.hide();
+  resetSketch();
   //timeAllowedInput.hide();
   //timeAllowedButton.hide();
 }
@@ -247,6 +267,7 @@ function startCPSGame(){
   screen = 2;
   button0.show();
   cPSButton.show();
+  bigButton.hide();
   //timeAllowedInput.show();
   //timeAllowedButton.show();
   clicks = 0;
@@ -257,6 +278,7 @@ function startLineTracing(){
   screen = 3;
   button0.show();
   cPSButton.hide();
+  resetSketch.hide();
   //timeAllowedInput.hide();
   //timeAllowedButton.hide();
 }
@@ -336,4 +358,61 @@ function timer() {
 
   //If the result of the above math is 30...
   return time; //stop running this function once the timer reaches 30
+}
+
+function resetSketch() {
+  
+  textInstructions="Click to start"; //instructions for the button
+  bigButton=createButton(textInstructions); //makes a button
+  bigButton.position(10,10);
+  bigButton.size(boxSize * 2,boxSize);
+  let col=color(rBox,gBox,bBox);
+  bigButton.style('background-color', col);
+  bigButton.style('font-size', '18px');
+  bigButton.mousePressed(testButton); //when bigButton is pushed, run function testButton
+}
+
+function testButton(){
+  rBox=255;gBox=255;bBox=0; //yellow
+  randomTime= round(random(1000,7000)); //pick a time between 1000 and 7000 ms
+  textInstructions="Click here if it says "+startWording+" but don't click if it says "+waitWording;
+  waitForGreenTimeout=setTimeout(startTimer,randomTime); // in randomTime ms the function startTimer will run
+  bigButton.mousePressed(falseStart); //changes what clicking the button does. Now call the function falseStart
+}
+
+function falseStart(){
+  print("false start");
+  clearTimeout(waitForGreenTimeout);
+  clearTimeout(waitForRedTimeout);
+  rBox=150;gBox=150;bBox=255; //reset color to start
+  textInstructions="False start. Wait for the color to change! \n Click here to test again."
+  bigButton.mousePressed(testButton);
+  resultTimes.push(" False Start");
+}
+
+function startTimer(){
+  if(random(['green','green','red'])==='green') {
+    rBox=255;gBox=0;bBox=0;//green
+    textInstructions=startWording;
+    timeStart=millis();
+    bigButton.mousePressed(computeElaspedTime);
+  } else {
+    rBox=0;gBox=255;bBox=0;//red
+    textInstructions=waitWording;
+    bigButton.mousePressed(falseStart);
+    waitForRedTimeout=setTimeout(redReset,3000);
+  }
+}
+function redReset() {
+  rBox=150;gBox=150;bBox=255; //reset color to start
+  textInstructions="You waited correctly. Click here to test again."
+  bigButton.mousePressed(testButton);
+  resultTimes.push(" waited");
+}
+function computeElaspedTime(){
+  elapsedTime=round(millis()-timeStart);
+  rBox=150;gBox=150;bBox=255; //reset color to start
+  textInstructions="Your reaction time was "+elapsedTime+" ms. \n Click here to test again."
+  bigButton.mousePressed(testButton);
+  resultTimes.push(' '+elapsedTime);
 }
