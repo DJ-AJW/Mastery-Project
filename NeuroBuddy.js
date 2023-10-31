@@ -10,6 +10,7 @@ let button3;
 let cPSButton;
 //let timeAllowedInput;
 //let timeAllowedButton;
+let hitmarker;
 let img;
 let Rect;
 var startTime; //the beginning of our clock timer
@@ -41,6 +42,7 @@ let clicks = 0;
 
 function preload() {
   img = loadImage('brain-1.png');
+  hitmarker = loadSound('hitmarker.mp3');
 }
 
 function setup() {
@@ -156,6 +158,7 @@ function CPSGame(){
   //update clicks
   function incrementClicks(){
     clicks++;
+    hitmarker.play();
   }
   cPSButton.mouseClicked(incrementClicks);  
   //word box
@@ -164,12 +167,13 @@ function CPSGame(){
   rect(600, 550, 350, 100);
   fill(255);
   text("Clicks: " + clicks, 775, 615);
-  if (clicks == 1) {
+  if (clicks == 0) {
     startTime = millis();
   }
   if (timer() >= timeAllowed ) {
     text("CPS: " + clicks / timeAllowed, 775, 365);
     cPSButton.hide();
+    end = true;
   }
 }
 
@@ -357,6 +361,10 @@ function timer() {
   var time = int((millis() - startTime) / 1000);
 
   //If the result of the above math is 30...
+  if (end) {
+    time = 0;
+    end = false;
+  }
   return time; //stop running this function once the timer reaches 30
 }
 
