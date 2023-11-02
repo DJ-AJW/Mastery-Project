@@ -181,7 +181,7 @@ function CPSGame(){
   fill(0, 75, 132);
   textFont("Arial");
   textSize(38);
-  text("Click Box As Fast As Possible!", width / 2, height / 9);
+  text("Click The Box As Fast As Possible!", width / 2, height / 9);
   //update clicks
   function incrementClicks(){
     clicks++;
