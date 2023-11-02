@@ -114,6 +114,49 @@ function menuScreen(){
   image(img, width / 6, 4 * height / 10, 250, 200);
   }
 
+  function LineTracing(){
+    background(104,199,255);
+    
+    textSize(32)
+    textAlign(CENTER, TOP);
+    fill(0,75,132);
+    text("Line Tracing", 0, 12, width);
+    
+    textSize(20);
+    textAlign(CENTER, TOP);
+    text("Instructions: Trace the circle across the generated line to the designated spot",         0, 50, width);
+    
+    rect(384, 100, 768, 453);
+  
+    // if (frameCount % 10 == 0 ) {
+    //   if (drawn < positions1.length) {
+    //     drawn++;
+    //   }
+    // }
+    
+    // for(let i = 0; i < drawn; i++) {
+    //   fill(104,199,255);
+    //   ellipse(positions1[i][0], positions1[i][1], 10, 10);
+    // }
+    
+    // fill(104,199,255)
+    // circle(shapeX, shapeY, diameter);
+  
+    // if(shapeMove) {
+    // noFill()
+    // stroke(strokeCol)
+    // strokeWeight(20)
+    // beginShape()
+    // for (let i = 0; i < pts.length; i++) {
+    //   const pt = pts[i]
+    //   if (i === 0) curveVertex(pt.x, pt.y) // repeat first vertex
+    //   curveVertex(pt.x, pt.y)
+    //   if (i === pts.length - 1) curveVertex(pt.x, pt.y) // repeat last vertex
+    // }
+    // endShape()
+    // }
+    }
+
 function reactionTime(){
   Rect = new Car();
   background(104,199,255);  
@@ -207,14 +250,14 @@ function startCPSGame(){
   
 }
 
-// function startLineTracing(){
-//   screen = 3;
-//   button0.show();
-//   cPSButton.hide();
-//   bigButton.hide();
-//   //timeAllowedInput.hide();
-//   //timeAllowedButton.hide();
-// }
+function startLineTracing(){
+  screen = 3;
+  button0.show();
+  cPSButton.hide();
+  bigButton.hide();
+  //timeAllowedInput.hide();
+  //timeAllowedButton.hide();
+}
 
 class Car {
   constructor()
