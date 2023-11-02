@@ -229,7 +229,6 @@ function mousePressed () {
   else {
     shapeMove = false;
   }
-
 }
 
 function mouseReleased() {
