@@ -118,13 +118,11 @@ function menuScreen(){
     background(104,199,255);
     
     textSize(32)
-    textAlign(CENTER, TOP);
     fill(0,75,132);
     text("Line Tracing", 0, 12, width);
     
     textSize(20);
-    textAlign(CENTER, TOP);
-    text("Instructions: Trace the circle across the generated line to the designated spot",         0, 50, width);
+    text("Instructions: Trace the circle across the generated line to the designated spot", 0, 50, width);
     
     rect(384, 100, 768, 453);
   
