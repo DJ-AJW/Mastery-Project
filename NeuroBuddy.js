@@ -8,8 +8,6 @@ let button1;
 let button2;
 let button3;
 let cPSButton;
-//let timeAllowedInput;
-//let timeAllowedButton;
 let hitmarker;
 let img;
 let Rect;
@@ -76,11 +74,6 @@ function setup() {
 
   resetSketch();
   bigButton.hide();
-  
-  //timeAllowedInput = createInput();
-  //timeAllowedButton = createButton('Change Time!');
-  //timeAllowedInput.position(width / 2, 2 * height / 9);
-  //timeAllowedButton.position((width / 2) - 100, 2 * height / 9);
 }
 
 function draw() {
@@ -116,14 +109,11 @@ function menuScreen(){
 
   function LineTracing(){
     background(104,199,255);
-    
     textSize(32)
     fill(0,75,132);
     text("Line Tracing", 0, 12, width);
-    
     textSize(20);
     text("Instructions: Trace the circle across the generated line to the designated spot", 0, 50, width);
-    
     rect(384, 100, 768, 453);
   
     // if (frameCount % 10 == 0 ) {
@@ -183,10 +173,6 @@ function reactionTime(){
 
 function CPSGame(){
   let timeAllowed = 5;
-  //if (timeAllowedButton.mouseClicked()) {
-  //  timeAllowed = timeAllowedInput.value();
-  //}
-
   //rectangle
   background(104, 199, 255);
   fill(0, 75, 132);
@@ -211,10 +197,26 @@ function CPSGame(){
   if (clicks == 0) {
     startTime = millis();
   }
-  if (timer() >= timeAllowed ) {
+  if (timer() >= timeAllowed) {
     text("CPS: " + clicks / timeAllowed, 775, 365);
     cPSButton.hide();
     end = true;
+    textSize(30);
+    if (clicks / timeAllowed <= .5) {
+      text("Fast, but more practice won't hurt!", 775, 435);
+    }
+    else if (clicks / timeAllowed <= 3.5) {
+      text("You're getting crazy fast!", 775, 435);
+    }
+    else if (clicks / timeAllowed <= 5.5)  {
+      text("That's definitely faster than most!", 775, 435);
+    }
+    else if (clicks / timeAllowed <= 6.5) {
+      text("Whoa that was lightning fast!", 775, 435);
+    }
+    else {
+      text("GODLIKE!", 775, 435);
+    }
   }
 }
 
@@ -224,8 +226,6 @@ function startMenuScreen(){
   button0.hide();
   cPSButton.hide();
   bigButton.hide();
-  //timeAllowedInput.hide();
-  //timeAllowedButton.hide();
 }
 
 function startReactionTime(){
@@ -233,8 +233,6 @@ function startReactionTime(){
   button0.show();
   cPSButton.hide();
   resetSketch();
-  //timeAllowedInput.hide();
-  //timeAllowedButton.hide();
 }
 
 function startCPSGame(){
@@ -242,8 +240,6 @@ function startCPSGame(){
   button0.show();
   cPSButton.show();
   bigButton.hide();
-  //timeAllowedInput.show();
-  //timeAllowedButton.show();
   clicks = 0;
   
 }
@@ -253,8 +249,6 @@ function startLineTracing(){
   button0.show();
   cPSButton.hide();
   bigButton.hide();
-  //timeAllowedInput.hide();
-  //timeAllowedButton.hide();
 }
 
 class Car {
