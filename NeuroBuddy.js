@@ -198,24 +198,24 @@ function CPSGame(){
     startTime = millis();
   }
   if (timer() >= timeAllowed) {
-    text("CPS: " + clicks / timeAllowed, 775, 365);
+    text("CPS: " + clicks / timeAllowed, 750, 365);
     cPSButton.hide();
     end = true;
     textSize(30);
     if (clicks / timeAllowed <= .5) {
-      text("Fast, but more practice won't hurt!", 775, 435);
+      text("Fast, but more practice won't hurt!", 750, 410);
     }
     else if (clicks / timeAllowed <= 3.5) {
-      text("You're getting crazy fast!", 775, 435);
+      text("Good Job!", 750, 410);
     }
     else if (clicks / timeAllowed <= 5.5)  {
-      text("That's definitely faster than most!", 775, 435);
+      text("That's definitely faster than most!", 750, 410);
     }
-    else if (clicks / timeAllowed <= 6.5) {
-      text("Whoa that was lightning fast!", 775, 435);
+    else if (clicks / timeAllowed <= 8.5) {
+      text("Whoa that was lightning fast!", 750, 410);
     }
     else {
-      text("GODLIKE!", 775, 435);
+      text("GODLIKE!", 750, 410);
     }
   }
 }
