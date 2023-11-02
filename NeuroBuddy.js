@@ -17,14 +17,14 @@ var startTime; //the beginning of our clock timer
 var end = false;
 
 //reaction time global variables
-let shapeX = 434;
-let shapeY = 150;
-const radius = 25;
-const diameter = radius * 2;
-let shapeMove = false;
-let mouseDraw = false;
-let pts = []
-let strokeCol
+// let shapeX = 434;
+// let shapeY = 150;
+// const radius = 25;
+// const diameter = radius * 2;
+// let shapeMove = false;
+// let mouseDraw = false;
+// let pts = []
+// let strokeCol
 
 let bigButton;
 var boxSize=400;//size of the button to press
@@ -177,76 +177,6 @@ function CPSGame(){
   }
 }
 
-function LineTracing(){
-  background(104,199,255);
-  
-  textSize(32)
-  textAlign(CENTER, TOP);
-  fill(0,75,132);
-  text("Line Tracing", 0, 12, width);
-  
-  textSize(20);
-  textAlign(CENTER, TOP);
-  text("Instructions: Trace the circle across the generated line to the designated spot",         0, 50, width);
-  
-  rect(384, 100, 768, 453);
-
-  if (frameCount % 10 == 0 ) {
-    if (drawn < positions1.length) {
-      drawn++;
-    }
-  }
-  
-  for(let i = 0; i < drawn; i++) {
-    fill(104,199,255);
-    ellipse(positions1[i][0], positions1[i][1], 10, 10);
-  }
-  
-  fill(104,199,255)
-  circle(shapeX, shapeY, diameter);
-
-  if(shapeMove) {
-  noFill()
-  stroke(strokeCol)
-  strokeWeight(20)
-  beginShape()
-  for (let i = 0; i < pts.length; i++) {
-    const pt = pts[i]
-    if (i === 0) curveVertex(pt.x, pt.y) // repeat first vertex
-    curveVertex(pt.x, pt.y)
-    if (i === pts.length - 1) curveVertex(pt.x, pt.y) // repeat last vertex
-  }
-  endShape()
-  }
-  }
-
-
-function mousePressed () {
-  let d = dist(mouseX, mouseY, shapeX, shapeY)
-  if (d < radius) {
-    shapeMove = true;
-  }
-  else {
-    shapeMove = false;
-  }
-}
-
-function mouseReleased() {
-  shapeMove = false;
-  shapeX = 434;
-  shapeY = 150;
-  pts = []
-  pts.push(new p5.Vector(mouseX, mouseY))
-  strokeCol = color(random(255), random(255), random(255))
-}
-
-function mouseDragged() {
-  if(shapeMove) {
-    shapeX = mouseX
-    shapeY = mouseY
-    pts.push(new p5.Vector(mouseX, mouseY))
-  }
-}
 
 function startMenuScreen(){
   screen = 0;
@@ -277,69 +207,14 @@ function startCPSGame(){
   
 }
 
-function startLineTracing(){
-  screen = 3;
-  button0.show();
-  cPSButton.hide();
-  bigButton.hide();
-  //timeAllowedInput.hide();
-  //timeAllowedButton.hide();
-}
-
-let drawn = 0;
-let positions1 = [
-  [434, 150],
-  [444, 160],
-  [454, 170],
-  [464, 180],
-  [474, 190],
-  [484, 200],
-  [494, 210],
-  [504, 220],
-  [514, 230],
-  [524, 240],
-  [544, 240],
-  [564, 240],
-  [584, 240],
-  [604, 240],
-  [624, 240],
-  [644, 240],
-  [664, 240],
-  [684, 240],
-  [704, 240],
-  [704, 240],
-  [714, 230],
-  [724, 220],
-  [734, 210],
-  [744, 200],
-  [754, 190],
-  [764, 180],
-  [774, 170],
-  [784, 160],
-  [794, 150],
-  [804, 160],
-  [814, 170],
-  [824, 180],
-  [834, 190],
-  [844, 200],
-  [854, 210],
-  [864, 220],
-  [874, 230],
-  [884, 240],
-  [894, 250],
-  [904, 260],
-  [914, 270],
-  [924, 280],
-  [944, 280],
-  [964, 280],
-  [984, 280],
-  [994, 270],
-  [1004, 260],
-  [1014, 250],
-  [1034, 250],
-  [1054, 250],
-  
-]
+// function startLineTracing(){
+//   screen = 3;
+//   button0.show();
+//   cPSButton.hide();
+//   bigButton.hide();
+//   //timeAllowedInput.hide();
+//   //timeAllowedButton.hide();
+// }
 
 class Car {
   constructor()
