@@ -14,6 +14,8 @@ let Rect;
 var startTime; //the beginning of our clock timer
 var end = false;
 
+let mlg;
+
 //reaction time global variables
 // let shapeX = 434;
 // let shapeY = 150;
@@ -41,6 +43,9 @@ let clicks = 0;
 function preload() {
   img = loadImage('brain-1.png');
   hitmarker = loadSound('hitmarker.mp3');
+
+  mlg = loadImage('mlg.gif');
+  wow = loadSound('Voicy_Wow!');
 }
 
 function setup() {
@@ -168,6 +173,10 @@ function reactionTime(){
     startTime = millis(); //start our timer and count up in milliseconds
     //1000 milliseconds = 1 second.
   }
+
+  // if (bigButton.mousePressed(computeElaspedTime()) < 500){
+  //   image(mlg, 1250, 100, 100);
+  // }
   
 }
 
