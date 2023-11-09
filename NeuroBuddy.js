@@ -9,12 +9,11 @@ let button2;
 let button3;
 let cPSButton;
 let hitmarker;
+let timeAdjuster;
 let img;
 let Rect;
 var startTime; //the beginning of our clock timer
 var end = false;
-
-let mlg;
 
 //reaction time global variables
 // let shapeX = 434;
@@ -43,9 +42,6 @@ let clicks = 0;
 function preload() {
   img = loadImage('brain-1.png');
   hitmarker = loadSound('hitmarker.mp3');
-
-  mlg = loadImage('mlg.gif');
-  wow = loadSound('Voicy_Wow!');
 }
 
 function setup() {
@@ -174,6 +170,12 @@ function reactionTime(){
     //1000 milliseconds = 1 second.
   }
 
+
+  // if (bigButton.mousePressed(computeElaspedTime()) < 500){
+  //   image(mlg, 1250, 100, 100);
+  // }
+  
+  
   // if (bigButton.mousePressed(computeElaspedTime()) < 500){
   //   image(mlg, 1250, 100, 100);
   // }
@@ -181,7 +183,7 @@ function reactionTime(){
 }
 
 function CPSGame(){
-  let timeAllowed = 5;
+  let timeAllowed = 10;
   //rectangle
   background(104, 199, 255);
   fill(0, 75, 132);
