@@ -7,7 +7,7 @@ let button0;
 let button1;
 let button2;
 let button3;
-let cPSButton;
+
 let hitmarker;
 let timeAdjuster;
 let img;
@@ -68,10 +68,7 @@ function setup() {
   button3.size(100, 150);
   button3.mousePressed(startLineTracing);
 
-  cPSButton = createButton("Click Me!");
-  cPSButton.position(500,200);
-  cPSButton.size(500,300);
-  cPSButton.hide();
+  
 
   resetSketch();
   bigButton.hide();
@@ -198,7 +195,16 @@ function CPSGame(){
     clicks++;
     hitmarker.play();
   }
-  cPSButton.mouseClicked(incrementClicks);  
+   
+  if (mouseX >= 400 && mouseX <= 750 && mouseY >= 200 && mouseY <= 500 && mouseIsPressed == true){
+    
+    if (mouseIsPressed == true){
+      mouseIsPressed = false;
+      incrementClicks();
+    }
+    
+  }
+
   //word box
   fill(0,75,132);
   text("Timer: " + timer(), 400, 365);
@@ -210,7 +216,7 @@ function CPSGame(){
   }
   if (timer() >= timeAllowed) {
     text("CPS: " + clicks / timeAllowed, 750, 365);
-    cPSButton.hide();
+    
     end = true;
     textSize(30);
     if (clicks / timeAllowed <= .5) {
@@ -228,6 +234,7 @@ function CPSGame(){
     else {
       text("GODLIKE!", 750, 410);
     }
+    timer() = 0;
   }
 }
 
@@ -235,21 +242,21 @@ function CPSGame(){
 function startMenuScreen(){
   screen = 0;
   button0.hide();
-  cPSButton.hide();
+  
   bigButton.hide();
 }
 
 function startReactionTime(){
   screen = 1;
   button0.show();
-  cPSButton.hide();
+  
   resetSketch();
 }
 
 function startCPSGame(){
   screen = 2;
   button0.show();
-  cPSButton.show();
+  
   bigButton.hide();
   clicks = 0;
   
@@ -258,7 +265,7 @@ function startCPSGame(){
 function startLineTracing(){
   screen = 3;
   button0.show();
-  cPSButton.hide();
+  
   bigButton.hide();
 }
 
