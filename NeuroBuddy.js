@@ -36,12 +36,15 @@ var startWording="WAIT!" //language printed when time to start
 var waitWording="GO!" 
 var waitForGreenTimeout, waitForRedTimeout; //vars to handle the timeouts
 
+let CBUM;
+
 
 let clicks = 0;
 
 function preload() {
   img = loadImage('brain-1.png');
   hitmarker = loadSound('hitmarker.mp3');
+  CBUM = loadImage('CBUM_REAL.png');
 }
 
 function setup() {
@@ -184,7 +187,8 @@ function CPSGame(){
   //rectangle
   background(104, 199, 255);
   fill(0, 75, 132);
-  rect(500, 200, 500, 300);
+  // THIS IS THE IMPORTANT RECTANGLE TO BASE YOUR STUFF OFF OF
+  // rect(500, 200, 500, 300);
   //text
   fill(0, 75, 132);
   textFont("Arial");
@@ -196,7 +200,7 @@ function CPSGame(){
     hitmarker.play();
   }
    
-  if (mouseX >= 400 && mouseX <= 750 && mouseY >= 200 && mouseY <= 500 && mouseIsPressed == true){
+  if (mouseX >= 300 && mouseX <= 850 && mouseY >= 200 && mouseY <= 500 && mouseIsPressed == true){
     
     if (mouseIsPressed == true){
       mouseIsPressed = false;
