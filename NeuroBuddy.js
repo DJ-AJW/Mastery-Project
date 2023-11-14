@@ -41,7 +41,9 @@ let background_gym;
 let chad_banana;
 let burger;
 
-
+let health = 100;
+let maxHealth = 100;
+let rectWidth = 400;
 let clicks = 0;
 
 function preload() {
@@ -201,8 +203,11 @@ function CPSGame(){
   text("Click The Box As Fast As Possible!", width / 2, height / 9);
   //update clicks
   function incrementClicks(){
-    clicks++;
-    hitmarker.play();
+    if (health > 0) {
+      health -= 1/2;
+      clicks++;
+      hitmarker.play();
+    }
   }
    
   if (mouseX >= 300 && mouseX <= 850 && mouseY >= 200 && mouseY <= 500 && mouseIsPressed == true){
@@ -245,6 +250,21 @@ function CPSGame(){
     }
     timer() = 0;
   }
+  if (health < 25){
+    fill ('red');
+  }
+  else if (health < 50) {
+    fill (255,200,0);
+  }
+  else {
+    fill('green');
+  }
+  noStroke();
+  drawWidth = (health / maxHealth) * rectWidth;
+  rect (100, 100, drawWidth, 50);
+  stroke(0);
+  noFill();
+  rect(100, 100, rectWidth, 50);
 }
 
 
