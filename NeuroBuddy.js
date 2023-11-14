@@ -282,7 +282,7 @@ function startReactionTime(){
 function startCPSGame(){
   screen = 2;
   button0.show();
-  
+  health = 100;
   bigButton.hide();
   clicks = 0;
   
