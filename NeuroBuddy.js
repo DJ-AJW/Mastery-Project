@@ -38,6 +38,8 @@ var waitForGreenTimeout, waitForRedTimeout; //vars to handle the timeouts
 
 let CBUM;
 let background_gym;
+let chad_banana;
+let burger;
 
 
 let clicks = 0;
@@ -47,6 +49,8 @@ function preload() {
   hitmarker = loadSound('hitmarker.mp3');
   CBUM = loadImage('CBUM_REAL.png');
   background_gym = loadImage('gym_background.jpg');
+  chad_banana = loadImage('chad_banana.jpeg');
+  burger = loadImage('burger.png');
 }
 
 function setup() {
@@ -152,7 +156,6 @@ function reactionTime(){
   bigButton.position(width/3.75, height/5); //redraws the button
   bigButton.html(textInstructions); //puts the correct text in the button
   let col=color(rBox,gBox,bBox); //sets the button's color
-  bigButton.style('background-color', col);
   //textSize(14);
   //text("Reaction Time Tester, Mode C",10,15);
   text("Your reaction times in milliseconds: \n \n"+resultTimes,10,230,250,420);
@@ -314,9 +317,8 @@ function resetSketch() {
 }
 
 function testButton(){
-  rBox=255;gBox=255;bBox=0; //yellow
   randomTime= round(random(1000,7000)); //pick a time between 1000 and 7000 ms
-  textInstructions="Click here if it says "+startWording+" but don't click if it says "+waitWording;
+  textInstructions="Click here if a banana appears but don't click if a burger appears";
   waitForGreenTimeout=setTimeout(startTimer,randomTime); // in randomTime ms the function startTimer will run
   bigButton.mousePressed(falseStart); //changes what clicking the button does. Now call the function falseStart
 }
