@@ -189,6 +189,9 @@ function CPSGame(){
   fill(0, 75, 132);
   // THIS IS THE IMPORTANT RECTANGLE TO BASE YOUR STUFF OFF OF
   // rect(500, 200, 500, 300);
+
+  image(CBUM, (width / 2) - 250, (height / 2) - 250, 500, 500);
+
   //text
   fill(0, 75, 132);
   textFont("Arial");
