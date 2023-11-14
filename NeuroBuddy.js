@@ -37,6 +37,7 @@ var waitWording="GO!"
 var waitForGreenTimeout, waitForRedTimeout; //vars to handle the timeouts
 
 let CBUM;
+let background_gym;
 
 
 let clicks = 0;
@@ -45,6 +46,7 @@ function preload() {
   img = loadImage('brain-1.png');
   hitmarker = loadSound('hitmarker.mp3');
   CBUM = loadImage('CBUM_REAL.png');
+  background_gym = loadImage('gym_background.jpg');
 }
 
 function setup() {
@@ -71,8 +73,6 @@ function setup() {
   button3.size(100, 150);
   button3.mousePressed(startLineTracing);
 
-  
-
   resetSketch();
   bigButton.hide();
 }
@@ -93,7 +93,7 @@ function draw() {
 }
 
 function menuScreen(){
-  background(104, 199, 255);
+  background(background_gym);
 
   fill(0, 75, 132);
   textStyle(BOLD);
@@ -103,13 +103,12 @@ function menuScreen(){
 
   textSize(32);
   text("Assisting your brain in the recovery\n process", (2 * width) / 3, (3 * height) / 8);
-  tint(104, 199, 255);
 
   image(img, width / 6, 4 * height / 10, 250, 200);
   }
 
   function LineTracing(){
-    background(104,199,255);
+    background(background_gym);
     textSize(32)
     fill(0,75,132);
     text("Line Tracing", 0, 12, width);
@@ -148,7 +147,7 @@ function menuScreen(){
 
 function reactionTime(){
   Rect = new Car();
-  background(104,199,255);  
+  background(background_gym);  
 
   bigButton.position(width/3.75, height/5); //redraws the button
   bigButton.html(textInstructions); //puts the correct text in the button
@@ -185,7 +184,7 @@ function reactionTime(){
 function CPSGame(){
   let timeAllowed = 10;
   //rectangle
-  background(104, 199, 255);
+  background(background_gym);
   fill(0, 75, 132);
   // THIS IS THE IMPORTANT RECTANGLE TO BASE YOUR STUFF OFF OF
   // rect(500, 200, 500, 300);
