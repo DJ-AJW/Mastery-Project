@@ -202,11 +202,11 @@ function CPSGame(){
   textFont(font);
   fill(0, 75, 132);
   textSize(38);
-  text("Click The Box As Fast As Possible!", width / 2, height / 9);
+  text("Click C Bum As Fast As Possible!", width / 2, height / 9);
   //update clicks
   function incrementClicks(){
     if (health > 0) {
-      health -= 1;
+      health -= 20;
       clicks++;
       hitmarker.play();
     }
@@ -228,8 +228,9 @@ function CPSGame(){
   if (clicks == 0) {
     startTime = millis();
   }
+
   if (health == 0) {
-    timeTaken = millis() - startTime;
+    
     text("CPS: " + clicks / timeTaken, 750, 365);
     end = true;
     textSize(30);
@@ -250,20 +251,20 @@ function CPSGame(){
     }
   }
   if (health < 25){
-    fill ('red');
+    fill (255,0,0);
   }
   else if (health < 50) {
     fill (255,200,0);
   }
   else {
-    fill('green');
+    fill(0,255,0);
   }
   noStroke();
   drawWidth = (health / maxHealth) * rectWidth;
-  rect (100, 100, drawWidth, 50);
+  rect (535, 100, drawWidth, 50);
   stroke(0);
   noFill();
-  rect(100, 100, rectWidth, 50);
+  rect(535, 100, rectWidth, 50);
 }
 
 
