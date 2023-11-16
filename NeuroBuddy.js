@@ -44,7 +44,7 @@ let burger;
 
 let health = 100;
 let maxHealth = 100;
-let rectWidth = 400;
+let rectWidth = 700;
 let clicks = 0;
 
 function preload() {
@@ -199,9 +199,9 @@ function CPSGame(){
   textFont(font);
 
   textSize(38);
-  rect(60, 10, 1425, 100);
+  rect(30, 0, 1425, 75);
   fill('white');
-  text("Click CBUM as fast a possible to defeat him!", width / 2, height / 9);
+  text("Click CBUM as fast a possible to defeat him!", 725, height / 12);
   //update clicks
   function incrementClicks(){
     if (health > 0) {
@@ -249,20 +249,20 @@ function CPSGame(){
     }
   }
   if (health < 25){
-    fill ('red');
+    fill (255,0,0);
   }
   else if (health < 50) {
     fill (255,200,0);
   }
   else {
-    fill('green');
+    fill(0,255,0);
   }
   noStroke();
   drawWidth = (health / maxHealth) * rectWidth;
-  rect (100, 100, drawWidth, 50);
+  rect (420, 100, drawWidth, 50);
   stroke(0);
   noFill();
-  rect(100, 100, rectWidth, 50);
+  rect(420, 100, rectWidth, 50);
 }
 
 
