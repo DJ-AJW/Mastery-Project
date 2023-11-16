@@ -219,8 +219,9 @@ function CPSGame(){
   }
 
   //word box
-  fill(0,75,132);
+  fill('white');
   text("Timer: " + timer(), 400, 365);
+  fill('black');
   rect(600, 550, 350, 100);
   fill(255);
   text("Clicks: " + clicks, 775, 615);
