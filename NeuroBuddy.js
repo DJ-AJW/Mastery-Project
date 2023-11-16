@@ -48,7 +48,7 @@ let rectWidth = 400;
 let clicks = 0;
 
 function preload() {
-  img = loadImage('brain-1.png');
+  img = loadImage('biceps.png');
   hitmarker = loadSound('hitmarker.mp3');
   CBUM = loadImage('CBUM_REAL.png');
   background_gym = loadImage('gym_background.jpg');
@@ -112,7 +112,7 @@ function menuScreen(){
   textSize(32);
   text("Assisting your brain in the recovery\n process", (2 * width) / 3, (3 * height) / 8);
 
-  image(img, width / 6, 4 * height / 10, 250, 200);
+  image(img, 10, 500, 250, 250);
   }
 
   function LineTracing(){
