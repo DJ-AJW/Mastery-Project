@@ -193,8 +193,6 @@ function CPSGame(){
   //rectangle
   background(background_gym);
   fill(0, 75, 132);
-  // THIS IS THE IMPORTANT RECTANGLE TO BASE YOUR STUFF OFF OF
-  // rect(500, 200, 500, 300);
 
   image(CBUM, (width / 2) - 250, (height / 2) - 250, 500, 500);
 
@@ -202,7 +200,8 @@ function CPSGame(){
   textFont(font);
   fill(0, 75, 132);
   textSize(38);
-  text("Click The Box As Fast As Possible!", width / 2, height / 9);
+  rect(60, 10, 1425, 100);
+  text("Click CBUM as fast a possible to defeat him!", width / 2, height / 9);
   //update clicks
   function incrementClicks(){
     if (health > 0) {
@@ -229,7 +228,7 @@ function CPSGame(){
     startTime = millis();
   }
   if (health == 0) {
-    timeTaken = millis() - startTime;
+    timeTaken = timer() / clicks;
     text("CPS: " + clicks / timeTaken, 750, 365);
     end = true;
     textSize(30);
