@@ -192,15 +192,15 @@ function reactionTime(){
 function CPSGame(){
   //rectangle
   background(background_gym);
-  fill(0, 75, 132);
-
+  fill('black')
   image(CBUM, (width / 2) - 250, (height / 2) - 250, 500, 500);
 
   //text
   textFont(font);
-  fill(0, 75, 132);
+
   textSize(38);
   rect(60, 10, 1425, 100);
+  fill('white');
   text("Click CBUM as fast a possible to defeat him!", width / 2, height / 9);
   //update clicks
   function incrementClicks(){
