@@ -8,8 +8,9 @@ let button1;
 let button2;
 let button3;
 
+let font;
 let hitmarker;
-let timeAdjuster;
+let timeTaken;
 let img;
 let Rect;
 var startTime; //the beginning of our clock timer
@@ -53,6 +54,7 @@ function preload() {
   background_gym = loadImage('gym_background.jpg');
   chad_banana = loadImage('chad_banana.jpeg');
   burger = loadImage('burger.png');
+  font = loadFont('pixelFont.otf');
 }
 
 function setup() {
@@ -100,7 +102,7 @@ function draw() {
 
 function menuScreen(){
   background(background_gym);
-
+  textFont(font);
   fill(0, 75, 132);
   textStyle(BOLD);
   textAlign(CENTER);
@@ -115,6 +117,7 @@ function menuScreen(){
 
   function LineTracing(){
     background(background_gym);
+    textFont(font);
     textSize(32)
     fill(0,75,132);
     text("Line Tracing", 0, 12, width);
@@ -154,7 +157,7 @@ function menuScreen(){
 function reactionTime(){
   Rect = new Car();
   background(background_gym);  
-
+  textFont(font);
   bigButton.position(width/3.75, height/5); //redraws the button
   bigButton.html(textInstructions); //puts the correct text in the button
   let col=color(rBox,gBox,bBox); //sets the button's color
@@ -187,7 +190,6 @@ function reactionTime(){
 }
 
 function CPSGame(){
-  let timeAllowed = 10;
   //rectangle
   background(background_gym);
   fill(0, 75, 132);
@@ -197,26 +199,24 @@ function CPSGame(){
   image(CBUM, (width / 2) - 250, (height / 2) - 250, 500, 500);
 
   //text
+  textFont(font);
   fill(0, 75, 132);
-  textFont("Arial");
   textSize(38);
   text("Click The Box As Fast As Possible!", width / 2, height / 9);
   //update clicks
   function incrementClicks(){
     if (health > 0) {
-      health -= 1/2;
+      health -= 1;
       clicks++;
       hitmarker.play();
     }
   }
    
-  if (mouseX >= 300 && mouseX <= 850 && mouseY >= 200 && mouseY <= 500 && mouseIsPressed == true){
-    
+  if (mouseX >= 525 && mouseX <= 1020 && mouseY >= 171 && mouseY <= 550 && mouseIsPressed == true){
     if (mouseIsPressed == true){
       mouseIsPressed = false;
       incrementClicks();
     }
-    
   }
 
   //word box
@@ -228,27 +228,26 @@ function CPSGame(){
   if (clicks == 0) {
     startTime = millis();
   }
-  if (timer() >= timeAllowed) {
-    text("CPS: " + clicks / timeAllowed, 750, 365);
-    
+  if (health == 0) {
+    timeTaken = millis() - startTime;
+    text("CPS: " + clicks / timeTaken, 750, 365);
     end = true;
     textSize(30);
-    if (clicks / timeAllowed <= .5) {
+    if (clicks / timeTaken <= .5) {
       text("Fast, but more practice won't hurt!", 750, 410);
     }
-    else if (clicks / timeAllowed <= 3.5) {
+    else if (clicks / timeTaken <= 3.5) {
       text("Good Job!", 750, 410);
     }
-    else if (clicks / timeAllowed <= 5.5)  {
+    else if (clicks / timeTaken <= 5.5)  {
       text("That's definitely faster than most!", 750, 410);
     }
-    else if (clicks / timeAllowed <= 8.5) {
+    else if (clicks / timeTaken <= 8.5) {
       text("Whoa that was lightning fast!", 750, 410);
     }
     else {
       text("GODLIKE!", 750, 410);
     }
-    timer() = 0;
   }
   if (health < 25){
     fill ('red');
