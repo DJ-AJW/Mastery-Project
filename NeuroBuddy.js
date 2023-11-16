@@ -210,13 +210,11 @@ function CPSGame(){
     }
   }
    
-  if (mouseX >= 300 && mouseX <= 850 && mouseY >= 200 && mouseY <= 500 && mouseIsPressed == true){
-    
+  if (mouseX >= 525 && mouseX <= 1020 && mouseY >= 171 && mouseY <= 550 && mouseIsPressed == true){
     if (mouseIsPressed == true){
       mouseIsPressed = false;
       incrementClicks();
     }
-    
   }
 
   //word box
