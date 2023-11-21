@@ -27,14 +27,14 @@ var end = false;
 // let strokeCol
 
 let bigButton;
-var boxSize=400;//size of the button to press
-var rBox=150;gBox=150;bBox=255; //starting button color
+var boxSize = 400;//size of the button to press
+var rBox = 150; gBox = 150; bBox = 255; //starting button color
 var timeStart, timeCurrent, elapsedTime, randomTime; //timing variables
-var resultTimes=[]; //array that holds the results of the reaction tests
-var resultText; 
+var resultTimes = []; //array that holds the results of the reaction tests
+var resultText;
 var textInstructions; //current instructions
-var startWording="WAIT!" //language printed when time to start
-var waitWording="GO!" 
+var startWording = "WAIT!" //language printed when time to start
+var waitWording = "GO!"
 var waitForGreenTimeout, waitForRedTimeout; //vars to handle the timeouts
 
 let CBUM;
@@ -46,6 +46,7 @@ let health = 100;
 let maxHealth = 100;
 let rectWidth = 700;
 let clicks = 0;
+let addpic=false;
 
 function preload() {
   img = loadImage('biceps.png');
@@ -86,90 +87,93 @@ function setup() {
 }
 
 function draw() {
-  if (screen == 0){
+  if (screen == 0) {
     menuScreen();
   }
-  else if(screen == 1){
+  else if (screen == 1) {
     reactionTime();
   }
-  else if(screen == 2){
+  else if (screen == 2) {
     CPSGame();
   }
-  else if(screen == 3){
+  else if (screen == 3) {
     LineTracing();
   }
 }
 
-function menuScreen(){
+function menuScreen() {
   background(background_gym);
   textFont(font);
   fill(0, 75, 132);
   textStyle(BOLD);
   textAlign(CENTER);
   textSize(100);
-  text("NeuroBuddy", (2 * width) / 3, height/5);
+  text("NeuroBuddy", (2 * width) / 3, height / 5);
 
   textSize(32);
   text("Assisting your brain in the recovery\n process", (2 * width) / 3, (3 * height) / 8);
 
   image(img, 10, 500, 250, 250);
-  }
+}
 
-  function LineTracing(){
-    background(background_gym);
-    textFont(font);
-    textSize(32)
-    fill(0,75,132);
-    text("Line Tracing", 0, 12, width);
-    textSize(20);
-    text("Instructions: Trace the circle across the generated line to the designated spot", 0, 50, width);
-    rect(384, 100, 768, 453);
-  
-    // if (frameCount % 10 == 0 ) {
-    //   if (drawn < positions1.length) {
-    //     drawn++;
-    //   }
-    // }
-    
-    // for(let i = 0; i < drawn; i++) {
-    //   fill(104,199,255);
-    //   ellipse(positions1[i][0], positions1[i][1], 10, 10);
-    // }
-    
-    // fill(104,199,255)
-    // circle(shapeX, shapeY, diameter);
-  
-    // if(shapeMove) {
-    // noFill()
-    // stroke(strokeCol)
-    // strokeWeight(20)
-    // beginShape()
-    // for (let i = 0; i < pts.length; i++) {
-    //   const pt = pts[i]
-    //   if (i === 0) curveVertex(pt.x, pt.y) // repeat first vertex
-    //   curveVertex(pt.x, pt.y)
-    //   if (i === pts.length - 1) curveVertex(pt.x, pt.y) // repeat last vertex
-    // }
-    // endShape()
-    // }
-    }
-
-function reactionTime(){
-  Rect = new Car();
-  background(background_gym);  
+function LineTracing() {
+  background(background_gym);
   textFont(font);
-  bigButton.position(width/3.75, height/5); //redraws the button
+  textSize(32)
+  fill(0, 75, 132);
+  text("Line Tracing", 0, 12, width);
+  textSize(20);
+  text("Instructions: Trace the circle across the generated line to the designated spot", 0, 50, width);
+  rect(384, 100, 768, 453);
+
+  // if (frameCount % 10 == 0 ) {
+  //   if (drawn < positions1.length) {
+  //     drawn++;
+  //   }
+  // }
+
+  // for(let i = 0; i < drawn; i++) {
+  //   fill(104,199,255);
+  //   ellipse(positions1[i][0], positions1[i][1], 10, 10);
+  // }
+
+  // fill(104,199,255)
+  // circle(shapeX, shapeY, diameter);
+
+  // if(shapeMove) {
+  // noFill()
+  // stroke(strokeCol)
+  // strokeWeight(20)
+  // beginShape()
+  // for (let i = 0; i < pts.length; i++) {
+  //   const pt = pts[i]
+  //   if (i === 0) curveVertex(pt.x, pt.y) // repeat first vertex
+  //   curveVertex(pt.x, pt.y)
+  //   if (i === pts.length - 1) curveVertex(pt.x, pt.y) // repeat last vertex
+  // }
+  // endShape()
+  // }
+}
+
+function reactionTime() {
+  Rect = new Car();
+  background(background_gym);
+  textFont(font);
+  bigButton.position(width / 3.75, height / 5); //redraws the button
   bigButton.html(textInstructions); //puts the correct text in the button
-  let col=color(rBox,gBox,bBox); //sets the button's color
+  if (addpic) {
+    bigButton.html(`<img src="Chad_Banana.png" />`)
+  }
+  let col = color(rBox, gBox, bBox); //sets the button's color
   //textSize(14);
   //text("Reaction Time Tester, Mode C",10,15);
-  text("Your reaction times in milliseconds: \n \n"+resultTimes,10,230,250,420);
-  
+  text("Your reaction times in milliseconds: \n \n" + resultTimes, 10, 230, 250, 420);
+
   textSize(40);
-  fill(0,75,132);
-  text("Click The Blue Box Once It Turns Green!", 800, height/9);
-  
-  
+  fill(0, 75, 132);
+  text("Click The Blue Box Once It Turns Green!", 800, height / 9);
+
+
   end = false;//lets our code know the countdown hasn't ended yet
 
   if (mouseIsPressed) {
@@ -181,15 +185,15 @@ function reactionTime(){
   // if (bigButton.mousePressed(computeElaspedTime()) < 500){
   //   image(mlg, 1250, 100, 100);
   // }
-  
-  
+
+
   // if (bigButton.mousePressed(computeElaspedTime()) < 500){
   //   image(mlg, 1250, 100, 100);
   // }
-  
+
 }
 
-function CPSGame(){
+function CPSGame() {
   //rectangle
   background(background_gym);
   fill('black')
@@ -199,20 +203,21 @@ function CPSGame(){
   textFont(font);
 
   textSize(38);
+  stroke('white');
   rect(30, 0, 1425, 75);
   fill('white');
   text("Click CBUM as fast a possible to defeat him!", 725, height / 12);
   //update clicks
-  function incrementClicks(){
+  function incrementClicks() {
     if (health > 0) {
       health -= 1;
       clicks++;
       hitmarker.play();
     }
   }
-   
-  if (mouseX >= 525 && mouseX <= 1020 && mouseY >= 171 && mouseY <= 550 && mouseIsPressed == true){
-    if (mouseIsPressed == true){
+
+  if (mouseX >= 525 && mouseX <= 1020 && mouseY >= 171 && mouseY <= 550 && mouseIsPressed == true) {
+    if (mouseIsPressed == true) {
       mouseIsPressed = false;
       incrementClicks();
     }
@@ -239,7 +244,7 @@ function CPSGame(){
     else if (clicks / timeTaken <= 3.5) {
       text("Good Job!", 750, 410);
     }
-    else if (clicks / timeTaken <= 5.5)  {
+    else if (clicks / timeTaken <= 5.5) {
       text("That's definitely faster than most!", 750, 410);
     }
     else if (clicks / timeTaken <= 8.5) {
@@ -249,59 +254,58 @@ function CPSGame(){
       text("GODLIKE!", 750, 410);
     }
   }
-  if (health < 25){
-    fill (255,0,0);
+  if (health < 25) {
+    fill(255, 0, 0);
   }
   else if (health < 50) {
-    fill (255,200,0);
+    fill(255, 200, 0);
   }
   else {
-    fill(0,255,0);
+    fill(0, 255, 0);
   }
   noStroke();
   drawWidth = (health / maxHealth) * rectWidth;
-  rect (420, 100, drawWidth, 50);
+  rect(420, 100, drawWidth, 50);
   stroke(0);
   noFill();
   rect(420, 100, rectWidth, 50);
 }
 
 
-function startMenuScreen(){
+function startMenuScreen() {
   screen = 0;
   button0.hide();
-  
+
   bigButton.hide();
 }
 
-function startReactionTime(){
+function startReactionTime() {
   screen = 1;
   button0.show();
-  
+
   resetSketch();
 }
 
-function startCPSGame(){
+function startCPSGame() {
   screen = 2;
   button0.show();
   health = 100;
   bigButton.hide();
   clicks = 0;
-  
+
 }
 
-function startLineTracing(){
+function startLineTracing() {
   screen = 3;
   button0.show();
-  
+
   bigButton.hide();
 }
 
 class Car {
-  constructor()
-  {
-    this.xPos = width/3.75;
-    this.yPos = height/5;
+  constructor() {
+    this.xPos = width / 3.75;
+    this.yPos = height / 5;
   }
   show() {
     rect(this.xPos, this.yPos, 800, 400)
@@ -324,57 +328,67 @@ function timer() {
 }
 
 function resetSketch() {
-  
-  textInstructions="Click to start"; //instructions for the button
-  bigButton=createButton(textInstructions); //makes a button
-  bigButton.position(10,10);
-  bigButton.size(boxSize * 2,boxSize);
-  let col=color(rBox,gBox,bBox);
+
+  textInstructions = "Click to start"; //instructions for the button
+  bigButton = createButton(textInstructions); //makes a button
+  bigButton.position(10, 10);
+  bigButton.size(boxSize * 2, boxSize);
+  let col = color(rBox, gBox, bBox);
   bigButton.style('background-color', col);
   bigButton.style('font-size', '18px');
+  
   bigButton.mousePressed(testButton); //when bigButton is pushed, run function testButton
+ if (addpic){
+  bigButton.elt.innerHTML += `<img src="Chad_Banana.jpeg" width = "500" height = "10000"/>`
+  console.log("Draw")
+ }
 }
 
-function testButton(){
-  randomTime= round(random(1000,7000)); //pick a time between 1000 and 7000 ms
-  textInstructions="Click here if a banana appears but don't click if a burger appears";
-  waitForGreenTimeout=setTimeout(startTimer,randomTime); // in randomTime ms the function startTimer will run
+function testButton() {
+  randomTime = round(random(1000, 7000)); //pick a time between 1000 and 7000 ms
+  textInstructions = "Click here if a banana appears but don't click if a burger appears";
+  console.log({e:bigButton.elt})
+  waitForGreenTimeout = setTimeout(() => { startTimer(); 
+    bigButton.elt.innerHTML += `<img src="Chad_Banana.png" style="opacity:0.2;" />`
+  }, randomTime); // in randomTime ms the function startTimer will run
   bigButton.mousePressed(falseStart); //changes what clicking the button does. Now call the function falseStart
 }
 
-function falseStart(){
+function falseStart() {
   print("false start");
   clearTimeout(waitForGreenTimeout);
   clearTimeout(waitForRedTimeout);
-  rBox=150;gBox=150;bBox=255; //reset color to start
-  textInstructions="False start. Wait for the color to change! \n Click here to test again."
+  rBox = 150; gBox = 150; bBox = 255; //reset color to start
+  textInstructions = "False start. Wait for the color to change! \n Click here to test again."
   bigButton.mousePressed(testButton);
   resultTimes.push(" False Start");
 }
 
-function startTimer(){
-  if(random(['green','green','red'])==='green') {
-    rBox=255;gBox=0;bBox=0;//green
-    textInstructions=startWording;
-    timeStart=millis();
+function startTimer() {
+  addpic = true;
+  if (random(['green', 'green', 'red']) === 'green') {
+    rBox = 255; gBox = 0; bBox = 0;//green
+    textInstructions = startWording;
+    timeStart = millis();
     bigButton.mousePressed(computeElaspedTime);
   } else {
-    rBox=0;gBox=255;bBox=0;//red
-    textInstructions=waitWording;
+    rBox = 0; gBox = 255; bBox = 0;//red
+    textInstructions = waitWording;
     bigButton.mousePressed(falseStart);
-    waitForRedTimeout=setTimeout(redReset,3000);
+    waitForRedTimeout = setTimeout(redReset, 3000);
   }
 }
 function redReset() {
-  rBox=150;gBox=150;bBox=255; //reset color to start
-  textInstructions="You waited correctly. Click here to test again."
+  rBox = 150; gBox = 150; bBox = 255; //reset color to start
+  textInstructions = "You waited correctly. Click here to test again."
   bigButton.mousePressed(testButton);
   resultTimes.push(" waited");
 }
-function computeElaspedTime(){
-  elapsedTime=round(millis()-timeStart);
-  rBox=150;gBox=150;bBox=255; //reset color to start
-  textInstructions="Your reaction time was "+elapsedTime+" ms. \n Click here to test again."
+function computeElaspedTime() {
+  elapsedTime = round(millis() - timeStart);
+  rBox = 150; gBox = 150; bBox = 255; //reset color to start
+  textInstructions = "Your reaction time was " + elapsedTime + " ms. \n Click here to test again."
   bigButton.mousePressed(testButton);
-  resultTimes.push(' '+elapsedTime);
+  resultTimes.push(' ' + elapsedTime);
+  addpic=false;
 }
