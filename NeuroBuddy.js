@@ -339,7 +339,7 @@ function resetSketch() {
   
   bigButton.mousePressed(testButton); //when bigButton is pushed, run function testButton
  if (addpic){
-  bigButton.elt.innerHTML += `<img src="Chad_Banana.png" />`
+  bigButton.elt.innerHTML += `<img src="Chad_Banana.jpeg" />`
   console.log("Draw")
  }
 }
