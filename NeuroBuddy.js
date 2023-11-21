@@ -10,7 +10,7 @@ let button3;
 
 let font;
 let hitmarker;
-let timeTaken;
+let timeAllowed;
 let img;
 let Rect;
 var startTime; //the beginning of our clock timer
@@ -195,6 +195,7 @@ function reactionTime() {
 
 function CPSGame() {
   //rectangle
+  timeAllowed = 15
   background(background_gym);
   fill('black')
   image(CBUM, (width / 2) - 250, (height / 2) - 250, 500, 500);
@@ -208,16 +209,16 @@ function CPSGame() {
   fill('white');
   text("Click CBUM as fast a possible to defeat him!", 725, height / 12);
   //update clicks
-  function incrementClicks() {
-    if (health > 0) {
-      health -= 1;
+  function incrementClicks(){
+    if (health > 0 || timer() < timeAllowed) {
+      health -= .5;
       clicks++;
       hitmarker.play();
     }
   }
-
-  if (mouseX >= 525 && mouseX <= 1020 && mouseY >= 171 && mouseY <= 550 && mouseIsPressed == true) {
-    if (mouseIsPressed == true) {
+   
+  if (mouseX >= 525 && mouseX <= 1020 && mouseY >= 171 && mouseY <= 550 && mouseIsPressed == true && end == false){
+    if (mouseIsPressed == true){
       mouseIsPressed = false;
       incrementClicks();
     }
@@ -233,21 +234,23 @@ function CPSGame() {
   if (clicks == 0) {
     startTime = millis();
   }
-  if (health == 0) {
-    timeTaken = timer() / clicks;
-    text("CPS: " + clicks / timeTaken, 750, 365);
+  if (timer() > timeAllowed) {
     end = true;
+  }
+
+  if (end == true) {
+    text("CPS: " + Math.round(clicks / timeAllowed * 100) / 100, 750, 365);
     textSize(30);
-    if (clicks / timeTaken <= .5) {
+    if (clicks / timeAllowed <= .5) {
       text("Fast, but more practice won't hurt!", 750, 410);
     }
-    else if (clicks / timeTaken <= 3.5) {
+    else if (clicks / timeAllowed <= 3.5) {
       text("Good Job!", 750, 410);
     }
-    else if (clicks / timeTaken <= 5.5) {
+    else if (clicks / timeAllowed <= 5.5)  {
       text("That's definitely faster than most!", 750, 410);
     }
-    else if (clicks / timeTaken <= 8.5) {
+    else if (clicks / timeAllowed <= 8.5) {
       text("Whoa that was lightning fast!", 750, 410);
     }
     else {
@@ -292,7 +295,8 @@ function startCPSGame() {
   health = 100;
   bigButton.hide();
   clicks = 0;
-
+  end = false;
+  
 }
 
 function startLineTracing() {
@@ -322,8 +326,7 @@ function timer() {
   //If the result of the above math is 30...
   if (end) {
     time = 0;
-    end = false;
-  }
+  } 
   return time; //stop running this function once the timer reaches 30
 }
 
