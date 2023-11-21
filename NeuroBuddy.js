@@ -162,7 +162,7 @@ function reactionTime() {
   bigButton.position(width / 3.75, height / 5); //redraws the button
   bigButton.html(textInstructions); //puts the correct text in the button
   if (addpic) {
-    bigButton.html(`<img src="Chad_Banana.png" />`)
+    bigButton.html(`<img src="Chad_Banana.png" width="400" height="500"/>`)
   }
   let col = color(rBox, gBox, bBox); //sets the button's color
   //textSize(14);
@@ -339,7 +339,7 @@ function resetSketch() {
   
   bigButton.mousePressed(testButton); //when bigButton is pushed, run function testButton
  if (addpic){
-  bigButton.elt.innerHTML += `<img src="Chad_Banana.jpeg" width = "500" height = "10000"/>`
+  bigButton.elt.innerHTML += `<img src="Chad_Banana.png" />`
   console.log("Draw")
  }
 }
