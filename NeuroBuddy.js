@@ -171,7 +171,7 @@ function reactionTime() {
 
   textSize(40);
   fill(0, 75, 132);
-  text("Click The Blue Box Once It Turns Green!", 800, height / 9);
+  text("Click The Blue Box Once A Bananana Appears!", 800, height / 9);
 
 
   end = false;//lets our code know the countdown hasn't ended yet
@@ -337,7 +337,7 @@ function resetSketch() {
   bigButton.position(10, 10);
   bigButton.size(boxSize * 2, boxSize);
   let col = color(rBox, gBox, bBox);
-  bigButton.style('background-color', col);
+  bigButton.style('black', col);
   bigButton.style('font-size', '18px');
   
   bigButton.mousePressed(testButton); //when bigButton is pushed, run function testButton
