@@ -16,16 +16,6 @@ let Rect;
 var startTime; //the beginning of our clock timer
 var end = false;
 
-//reaction time global variables
-// let shapeX = 434;
-// let shapeY = 150;
-// const radius = 25;
-// const diameter = radius * 2;
-// let shapeMove = false;
-// let mouseDraw = false;
-// let pts = []
-// let strokeCol
-
 let bigButton;
 var boxSize = 400;//size of the button to press
 var rBox = 150; gBox = 150; bBox = 255; //starting button color
@@ -128,38 +118,9 @@ function LineTracing() {
   textSize(20);
   text("Instructions: Trace the circle across the generated line to the designated spot", 0, 50, width);
   rect(384, 100, 768, 453);
-
-  // if (frameCount % 10 == 0 ) {
-  //   if (drawn < positions1.length) {
-  //     drawn++;
-  //   }
-  // }
-
-  // for(let i = 0; i < drawn; i++) {
-  //   fill(104,199,255);
-  //   ellipse(positions1[i][0], positions1[i][1], 10, 10);
-  // }
-
-  // fill(104,199,255)
-  // circle(shapeX, shapeY, diameter);
-
-  // if(shapeMove) {
-  // noFill()
-  // stroke(strokeCol)
-  // strokeWeight(20)
-  // beginShape()
-  // for (let i = 0; i < pts.length; i++) {
-  //   const pt = pts[i]
-  //   if (i === 0) curveVertex(pt.x, pt.y) // repeat first vertex
-  //   curveVertex(pt.x, pt.y)
-  //   if (i === pts.length - 1) curveVertex(pt.x, pt.y) // repeat last vertex
-  // }
-  // endShape()
-  // }
 }
 
 function reactionTime() {
-  Rect = new Car();
   background(background_gym);
   textFont(font);
   bigButton.position(width / 3.75, height / 5); //redraws the button
@@ -168,13 +129,16 @@ function reactionTime() {
     bigButton.html(`<img src="Chad_Banana.png" width="400" height="500"/>`)
   }
   let col = color(rBox, gBox, bBox); //sets the button's color
-  //textSize(14);
-  //text("Reaction Time Tester, Mode C",10,15);
-  text("Your reaction times in milliseconds: \n \n" + resultTimes, 10, 230, 250, 420);
+  fill(0);
+  stroke(255);
+  rect(100, 32, 1325, 60);
+  rect(4, 185, 400, 400);
+  fill(255);
+  textSize(35);
+  text("Your reaction times in milliseconds: " + resultTimes, 85, 230 , 250, 420);
 
   textSize(40);
-  fill(0, 75, 132);
-  text("Click The Blue Box Once A Bananana Appears!", 800, height / 9);
+  text("Click The Box Once A Bananana Appears!", width / 2, height / 9);
 
 
   end = false;//lets our code know the countdown hasn't ended yet
@@ -183,17 +147,6 @@ function reactionTime() {
     startTime = millis(); //start our timer and count up in milliseconds
     //1000 milliseconds = 1 second.
   }
-
-
-  // if (bigButton.mousePressed(computeElaspedTime()) < 500){
-  //   image(mlg, 1250, 100, 100);
-  // }
-
-
-  // if (bigButton.mousePressed(computeElaspedTime()) < 500){
-  //   image(mlg, 1250, 100, 100);
-  // }
-
 }
 
 function CPSGame() {
@@ -309,16 +262,6 @@ function startLineTracing() {
   bigButton.hide();
 }
 
-class Car {
-  constructor() {
-    this.xPos = width / 3.75;
-    this.yPos = height / 5;
-  }
-  show() {
-    rect(this.xPos, this.yPos, 800, 400)
-  }
-}
-
 function timer() {
   /* this math takes the current second
   and subtracts our very first second (when the timer started)
@@ -344,7 +287,7 @@ function resetSketch() {
   bigButton.style('font-size', '18px');
   
   bigButton.mousePressed(testButton); //when bigButton is pushed, run function testButton
- if (addpic){
+  if (addpic){
   bigButton.elt.innerHTML += `<img src="Chad_Banana.jpeg" />`
   console.log("Draw")
  }
