@@ -195,8 +195,10 @@ function CPSGame() {
   }
 
   //word box
+  fill('black');
+  rect(210,325,300,50);
   fill('white');
-  text("Timer: " + timer(), 400, 365);
+  text("Timer: " + timer(), 350, 365);
   fill('black');
   rect(600, 550, 350, 100);
   fill(255);
@@ -207,24 +209,44 @@ function CPSGame() {
   if (timer() > timeAllowed) {
     end = true;
   }
-
+  
   if (end == true) {
-    text("CPS: " + Math.round(clicks / timeAllowed * 100) / 100, 750, 365);
-    textSize(30);
+    fill("black");
+    rect(210,410,300,50);
+    fill('white');
+    text("CPS: " + Math.round(clicks / timeAllowed * 100) / 100, 360, 450);
+    textSize(25);
     if (clicks / timeAllowed <= .5) {
-      text("Fast, but more practice won't hurt!", 750, 410);
+      fill("black");
+      rect(990,385,425,60);
+      fill("white");
+      text("Fast, but more \npractice won't hurt!", 1200, 410);
     }
     else if (clicks / timeAllowed <= 3.5) {
-      text("Good Job!", 750, 410);
+      fill("black");
+      rect(1085,375,225,50);
+      textSize(30);
+      fill('white');
+      text("Good Job!", 1200, 410);
     }
     else if (clicks / timeAllowed <= 5.5)  {
-      text("That's definitely faster than most!", 750, 410);
+      fill("black");
+      rect(1030,385,375,65);
+      fill('white');
+      text("That's definitely \nfaster than most!", 1220, 410);
     }
     else if (clicks / timeAllowed <= 8.5) {
-      text("Whoa that was lightning fast!", 750, 410);
+      fill("black");
+      rect(1040,385,320,60); 
+      fill('white');
+      text("Whoa that was \nlightning fast!", 1200, 410);
     }
     else {
-      text("GODLIKE!", 750, 410);
+      fill("black");
+      rect(1090,380,225,40); 
+      textSize(30);
+      fill('white');
+      text("GODLIKE!", 1200, 410);
     }
   }
   if (health < 25) {
