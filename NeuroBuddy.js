@@ -146,15 +146,15 @@ function reactionTime() {
     bigButton.html(`<img src="Chad_Banana.png" width="400" height="500"/>`)
   }
   let col = color(rBox, gBox, bBox); //sets the button's color
-  fill(0);
+  fill(0);  
   stroke(255);
-  rect(100, 32, 1325, 60);
-  rect(4, 185, 400, 400);
+  rect(250, 42, 1050, 50);
+  rect(22, 185, 375, 375);
   fill(255);
-  textSize(35);
+  textSize(30);
   text("Your reaction times in milliseconds: " + resultTimes, 85, 230 , 250, 420);
 
-  textSize(40);
+  textSize(32);
   text("Click The Box Once A Bananana Appears!", width / 2, height / 9);
 
 
@@ -168,23 +168,23 @@ function reactionTime() {
 
 function CPSGame() {
   //rectangle
-  timeAllowed = 15
+  timeAllowed = 15;
   background(background_gym);
-  fill('black')
+  fill('black');
   image(CBUM, (width / 2) - 250, (height / 2) - 250, 500, 500);
 
   //text
   textFont(font);
 
-  textSize(38);
+  textSize(32);
   stroke('white');
-  rect(30, 0, 1425, 75);
+  rect(82, 43, 1375, 50);
   fill('white');
-  text("Click CBUM as fast a possible to defeat him!", 725, height / 12);
+  text("Click CBUM as fast a possible to try to defeat him!", width / 2, height / 9);
   //update clicks
   function incrementClicks(){
     if (health > 0 || timer() < timeAllowed) {
-      health -= .5;
+      health -= .25;
       clicks++;
       hitmarker.play();
     }
@@ -241,24 +241,21 @@ function CPSGame() {
   }
   noStroke();
   drawWidth = (health / maxHealth) * rectWidth;
-  rect(420, 100, drawWidth, 50);
-  stroke(0);
+  rect(420, 110, drawWidth, 50);
   noFill();
-  rect(420, 100, rectWidth, 50);
+  rect(420, 110, rectWidth, 50);
 }
 
 
 function startMenuScreen() {
   screen = 0;
   button0.hide();
-
   bigButton.hide();
 }
 
 function startReactionTime() {
   screen = 1;
   button0.show();
-
   resetSketch();
 }
 
@@ -269,13 +266,11 @@ function startCPSGame() {
   bigButton.hide();
   clicks = 0;
   end = false;
-  
 }
 
 function startLineTracing() {
   screen = 3;
   button0.show();
-
   bigButton.hide();
 }
 
@@ -296,7 +291,7 @@ function timer() {
 
 
 function resetSketch() {
- textInstructions = "Click to start"; //instructions for the button
+ textInstructions = "Click to start!"; //instructions for the button
   bigButton = createButton(textInstructions); //makes a button
   bigButton.position(10, 10);
   bigButton.size(boxSize * 2, boxSize);
