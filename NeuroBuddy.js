@@ -49,7 +49,7 @@ let clicks = 0;
 let addpic=false;
 
 function preload() {
-  img = loadImage('biceps.png');
+  img = loadImage('bicep gif.gif');
   hitmarker = loadSound('hitmarker.mp3');
   CBUM = loadImage('CBUM_REAL.png');
   background_gym = loadImage('gym_background.jpg');
@@ -104,16 +104,19 @@ function draw() {
 function menuScreen() {
   background(background_gym);
   textFont(font);
-  fill(0, 75, 132);
+  stroke(255);
+  rect(565, 55, 920, 100);
+  rect(690, 225, 650, 100);
+  fill(255);
   textStyle(BOLD);
   textAlign(CENTER);
   textSize(100);
-  text("NeuroBuddy", (2 * width) / 3, height / 5);
+  text("StrokeBuddy", (2 * width) / 3, height / 5);
 
   textSize(32);
-  text("Assisting your brain in the recovery\n process", (2 * width) / 3, (3 * height) / 8);
-
-  image(img, 10, 500, 250, 250);
+  text("Assisting your brain in \nthe recovery process!", (2 * width) / 3, (3 * height) / 8);
+  fill(0);
+  image(img, -100, 100, 700, 500);
 }
 
 function LineTracing() {
