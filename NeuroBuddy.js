@@ -297,7 +297,7 @@ function resetSketch() {
 
 function testButton() {
   randomTime = round(random(1000, 7000)); //pick a time between 1000 and 7000 ms
-  textInstructions = "Click here if a banana appears but don't click if a burger appears";
+  textInstructions = "Click here if a banana appears!";
   console.log({e:bigButton.elt})
   waitForGreenTimeout = setTimeout(() => { startTimer(); 
     bigButton.elt.innerHTML += `<img src="Chad_Banana.png" style="opacity:0.2;" />`
