@@ -276,15 +276,17 @@ function timer() {
   return time; //stop running this function once the timer reaches 30
 }
 
-function resetSketch() {
 
-  textInstructions = "Click to start"; //instructions for the button
+
+function resetSketch() {
+ textInstructions = "Click to start"; //instructions for the button
   bigButton = createButton(textInstructions); //makes a button
   bigButton.position(10, 10);
   bigButton.size(boxSize * 2, boxSize);
-  let col = color(rBox, gBox, bBox);
-  bigButton.style('black', col);
+  let col = color('black');
+  bigButton.style('background-color', col);
   bigButton.style('font-size', '18px');
+  bigButton.style('color', 'white');
   
   bigButton.mousePressed(testButton); //when bigButton is pushed, run function testButton
   if (addpic){
