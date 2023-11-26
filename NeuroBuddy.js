@@ -72,6 +72,19 @@ function setup() {
   button3.size(100, 150);
   button3.mousePressed(startLineTracing);
 
+  button0.style('background-color', 'black');
+  button0.style('color', 'white');
+  button0.style('font-family', "pixelFont");
+  button1.style('background-color', 'black');
+  button1.style('color', 'white');
+  button1.style('font-family', "pixelFont");
+  button2.style('background-color', 'black');
+  button2.style('color', 'white');
+  button2.style('font-family', "pixelFont");
+  button3.style('background-color', 'black');
+  button3.style('color', 'white');
+  button3.style('font-family', "pixelFont");
+
   resetSketch();
   bigButton.hide();
 }
@@ -125,6 +138,7 @@ function reactionTime() {
   textFont(font);
   bigButton.position(width / 3.75, height / 5); //redraws the button
   bigButton.html(textInstructions); //puts the correct text in the button
+  bigButton.style('font-family',"pixelFont");
   if (addpic) {
     bigButton.html(`<img src="Chad_Banana.png" width="400" height="500"/>`)
   }
