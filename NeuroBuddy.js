@@ -46,6 +46,7 @@ function preload() {
   chad_banana = loadImage('chad_banana.jpeg');
   burger = loadImage('burger.png');
   font = loadFont('pixelFont.otf');
+  bodyBuilder = loadImage('BodyBuilder (2).png');
 }
 
 function setup() {
@@ -124,13 +125,15 @@ function menuScreen() {
 
 function LineTracing() {
   background(background_gym);
+  
   textFont(font);
-  textSize(32)
-  fill(0, 75, 132);
-  text("Line Tracing", 0, 12, width);
-  textSize(20);
-  text("Instructions: Trace the circle across the generated line to the designated spot", 0, 50, width);
-  rect(384, 100, 768, 453);
+  fill('black');
+  textSize(70);
+  rect(170, 20, 1200, 100);
+  fill('white');
+  text("Sketch Flex Showdown", 0, 80, width);
+  rect((width / 2) - 250, (height / 2) - 232, 500, 480);
+  image(bodyBuilder, (width / 2) - 250, (height / 2) - 250, 500, 500);
 }
 
 function reactionTime() {
