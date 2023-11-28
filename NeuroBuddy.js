@@ -93,6 +93,8 @@ function setup() {
 
   resetSketch();
   bigButton.hide();
+
+  rectMode(CENTER);
 }
 
 function draw() {
@@ -141,10 +143,12 @@ function startScreen() {
   button3.show();
   background(background_gym);
   
+  fill('black')
+  rect(700, 50, 1800, 100);
   textFont(font);
-  fill('black');
+  fill('white');
   textSize(70);
-  text('WELCOME TO CREATINE CATCH', width / 2, 50);
+  text('WELCOME TO CREATINE CATCH', width / 2, 75);
   // let button4 = createButton('Start Creatine Catch');
   text('click to start', width / 2, height / 2 );
   reset();
