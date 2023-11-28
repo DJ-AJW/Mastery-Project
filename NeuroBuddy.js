@@ -38,6 +38,11 @@ let rectWidth = 700;
 let clicks = 0;
 let addpic=false;
 
+var y=-20;
+var x=200;
+var speed = 2;
+var score= 0;
+
 function preload() {
   img = loadImage('bicep gif.gif');
   hitmarker = loadSound('hitmarker.mp3');
@@ -63,15 +68,15 @@ function setup() {
   button1.size(100, 150);
   button1.mousePressed(startReactionTime);
 
-  button2 = createButton("CPS Game!");
+  button2 = createButton("CBUM Beatdown!");
   button2.position(width - 200, height - 150);
   button2.size(100, 150);
   button2.mousePressed(startCPSGame);
 
-  button3 = createButton("Line Tracing Game!");
+  button3 = createButton("Creatine Catch!");
   button3.position(width - 300, height - 150);
   button3.size(100, 150);
-  button3.mousePressed(startLineTracing);
+  button3.mousePressed(startGameOn);
 
   button0.style('background-color', 'black');
   button0.style('color', 'white');
@@ -101,7 +106,13 @@ function draw() {
     CPSGame();
   }
   else if (screen == 3) {
-    LineTracing();
+    startScreen();
+  }
+  else if (screen == 4) {
+    gameOn();
+  }
+  else if (screen == 5) {
+    endScreen();
   }
 }
 
@@ -123,17 +134,79 @@ function menuScreen() {
   image(img, -100, 100, 700, 500);
 }
 
-function LineTracing() {
+function startScreen() {
+  button0.show();
+  button1.show();
+  button2.show();
+  button3.show();
   background(background_gym);
   
   textFont(font);
   fill('black');
   textSize(70);
-  rect(170, 20, 1200, 100);
-  fill('white');
-  text("Sketch Flex Showdown", 0, 80, width);
-  rect((width / 2) - 250, (height / 2) - 232, 500, 480);
-  image(bodyBuilder, (width / 2) - 250, (height / 2) - 250, 500, 500);
+  text('WELCOME TO CREATINE CATCH', width / 2, 50);
+  // let button4 = createButton('Start Creatine Catch');
+  text('click to start', width / 2, height / 2 );
+  reset();
+  
+}
+
+function gameOn(){
+  button0.hide();
+  button1.hide();
+  button2.hide();
+  button3.hide();
+	background(background_gym)
+  textSize(70);
+  rect(768, 10, 888, 100);
+  fill('White');
+  text("score = " + score, width / 2, 50);
+  fill('Black');
+  ellipse(x,y,20,20)
+  rectMode(CENTER);
+  rect(mouseX,height-10,50,30)
+	y+= speed;
+  if(y>height){
+  	screen =5;
+	 }
+  if(y>height-10 && x>mouseX-20 && x<mouseX+20){
+  	y=-20;
+    speed+=.5;
+    score+= 1;
+  }
+	if(y==-20){
+  	pickRandom();
+  }
+}
+
+function pickRandom(){
+	x= random(20,width-20)
+}
+
+function endScreen(){
+  button0.show();
+  button1.show();
+  button2.show();
+  button3.show();
+  background(150)
+  textSize(70);
+  text('GAME OVER', width / 2, 100)
+  text("SCORE = " + score, width / 2, height / 2 -100)
+  text('click to play again', width / 2, 400);
+}
+
+function mousePressed(){
+	if(screen==3){
+  	screen=4
+  }else if(screen==5){
+  	screen=3
+  }
+}
+
+function reset(){
+  score=0;
+  speed=2;
+  y=-20;
 }
 
 function reactionTime() {
@@ -290,8 +363,20 @@ function startCPSGame() {
   end = false;
 }
 
-function startLineTracing() {
+function startCreatine() {
   screen = 3;
+  button0.show();
+  bigButton.hide();
+}
+
+function startGameOn() {
+  screen = 4;
+  button0.show();
+  bigButton.hide();
+}
+
+function startEndScreen() {
+  screen = 5;
   button0.show();
   bigButton.hide();
 }
