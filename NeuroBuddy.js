@@ -225,11 +225,11 @@ function reactionTime() {
   let col = color(rBox, gBox, bBox); //sets the button's color
   fill(0);  
   stroke(255);
-  rect(250, 42, 1050, 50);
-  rect(22, 185, 375, 375);
+  rect(770, 70, 1050, 50);
+  rect(200, 450, 375, 375);
   fill(255);
   textSize(30);
-  text("Your reaction times in milliseconds: " + resultTimes, 85, 230 , 250, 420);
+  text("Your reaction times in milliseconds: " + resultTimes, 200, 500 , 250, 420);
 
   textSize(32);
   text("Click The Box Once A Bananana Appears!", width / 2, height / 9);
