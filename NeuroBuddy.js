@@ -63,12 +63,12 @@ function setup() {
   button0.mousePressed(startMenuScreen);
   button0.hide();
 
-  button1 = createButton("Reaction Time!");
+  button1 = createButton("Banana Bulk!");
   button1.position(width - 100, height - 150);
   button1.size(100, 150);
   button1.mousePressed(startReactionTime);
 
-  button2 = createButton("CBUM Beatdown!");
+  button2 = createButton("CBUM Chaos!");
   button2.position(width - 200, height - 150);
   button2.size(100, 150);
   button2.mousePressed(startCPSGame);
