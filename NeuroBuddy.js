@@ -149,7 +149,10 @@ function startScreen() {
   fill('white');
   textSize(70);
   text('WELCOME TO CREATINE CATCH', width / 2, 75);
-  // let button4 = createButton('Start Creatine Catch');
+  fill("black");
+  rectMode(CENTER);
+  rect(770, 320, 815, 100);
+  fill("white");
   text('click to start', width / 2, height / 2 );
   reset();
   
