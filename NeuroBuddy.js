@@ -435,7 +435,7 @@ function falseStart() {
   clearTimeout(waitForGreenTimeout);
   clearTimeout(waitForRedTimeout);
   rBox = 150; gBox = 150; bBox = 255; //reset color to start
-  textInstructions = "False start. Wait for the color to change! \n Click here to test again."
+  textInstructions = "False start. \n Click here to test again."
   bigButton.mousePressed(testButton);
   resultTimes.push(" False Start");
 }
