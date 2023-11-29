@@ -122,8 +122,8 @@ function menuScreen() {
   background(background_gym);
   textFont(font);
   stroke(255);
-  rect(565, 55, 920, 100);
-  rect(690, 225, 650, 100);
+  rect(1025, 95, 920, 100);
+  rect(1025, 275, 650, 100);
   fill(255);
   textStyle(BOLD);
   textAlign(CENTER);
@@ -228,11 +228,11 @@ function reactionTime() {
   let col = color(rBox, gBox, bBox); //sets the button's color
   fill(0);  
   stroke(255);
-  rect(250, 42, 1050, 50);
-  rect(22, 185, 375, 375);
+  rect(770, 70, 1050, 50);
+  rect(200, 450, 375, 375);
   fill(255);
   textSize(30);
-  text("Your reaction times in milliseconds: " + resultTimes, 85, 230 , 250, 420);
+  text("Your reaction times in milliseconds: " + resultTimes, 200, 500 , 250, 420);
 
   textSize(32);
   text("Click The Box Once A Bananana Appears!", width / 2, height / 9);
@@ -258,9 +258,9 @@ function CPSGame() {
 
   textSize(32);
   stroke('white');
-  rect(82, 43, 1375, 50);
+  rect(775, 43, 1375, 50);
   fill('white');
-  text("Click CBUM as fast a possible to try to defeat him!", width / 2, height / 9);
+  text("Click CBUM as fast a possible to try to defeat him!", width / 2, 60);
   //update clicks
   function incrementClicks(){
     if (health > 0 || timer() < timeAllowed) {
@@ -276,16 +276,15 @@ function CPSGame() {
       incrementClicks();
     }
   }
-
   //word box
   fill('black');
-  rect(210,325,300,50);
+  rect(350,355,300,50);
   fill('white');
   text("Timer: " + timer(), 350, 365);
   fill('black');
-  rect(600, 550, 350, 100);
+  rect(775, 625, 330, 75);
   fill(255);
-  text("Clicks: " + clicks, 775, 615);
+  text("Clicks: " + clicks, 775, 635);
   if (clicks == 0) {
     startTime = millis();
   }
@@ -295,38 +294,38 @@ function CPSGame() {
   
   if (end == true) {
     fill("black");
-    rect(210,410,300,50);
+    rect(350,440,300,50);
     fill('white');
     text("CPS: " + Math.round(clicks / timeAllowed * 100) / 100, 360, 450);
     textSize(25);
     if (clicks / timeAllowed <= .5) {
       fill("black");
-      rect(990,385,425,60);
+      rect(1245,420,425,60);
       fill("white");
-      text("Fast, but more \npractice won't hurt!", 1200, 410);
+      text("Fast, but more \npractice won't hurt!", 1250, 410);
     }
     else if (clicks / timeAllowed <= 3.5) {
       fill("black");
-      rect(1085,375,225,50);
+      rect(1200,400,225,50);
       textSize(30);
       fill('white');
       text("Good Job!", 1200, 410);
     }
     else if (clicks / timeAllowed <= 5.5)  {
       fill("black");
-      rect(1030,385,375,65);
+      rect(1215,415,375,65);
       fill('white');
       text("That's definitely \nfaster than most!", 1220, 410);
     }
     else if (clicks / timeAllowed <= 8.5) {
       fill("black");
-      rect(1040,385,320,60); 
+      rect(1200,415,320,60); 
       fill('white');
       text("Whoa that was \nlightning fast!", 1200, 410);
     }
     else {
       fill("black");
-      rect(1090,380,225,40); 
+      rect(1200,400,225,40); 
       textSize(30);
       fill('white');
       text("GODLIKE!", 1200, 410);
@@ -341,11 +340,11 @@ function CPSGame() {
   else {
     fill(0, 255, 0);
   }
-  noStroke();
+  
   drawWidth = (health / maxHealth) * rectWidth;
-  rect(420, 110, drawWidth, 50);
+  rect(750, 110, drawWidth, 50);
   noFill();
-  rect(420, 110, rectWidth, 50);
+  rect(750, 110, rectWidth, 50);
 }
 
 
