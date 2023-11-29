@@ -122,8 +122,8 @@ function menuScreen() {
   background(background_gym);
   textFont(font);
   stroke(255);
-  rect(565, 55, 920, 100);
-  rect(690, 225, 650, 100);
+  rect(1025, 95, 920, 100);
+  rect(1025, 275, 650, 100);
   fill(255);
   textStyle(BOLD);
   textAlign(CENTER);
