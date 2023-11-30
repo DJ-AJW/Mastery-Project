@@ -15,6 +15,7 @@ let img;
 let Rect;
 var startTime; //the beginning of our clock timer
 var end = false;
+let lobbyMusic;
 
 let bigButton;
 var boxSize = 400;//size of the button to press
@@ -42,6 +43,8 @@ var y=-20;
 var x=200;
 var speed = 2;
 var score= 0;
+let creatineCollect;
+let gameOver;
 
 function preload() {
   img = loadImage('bicep gif.gif');
@@ -52,6 +55,9 @@ function preload() {
   burger = loadImage('burger.png');
   font = loadFont('pixelFont.otf');
   bodyBuilder = loadImage('BodyBuilder (2).png');
+  creatineCollect = loadSound("creatineCollect.mp3");
+  gameOver = loadSound("gameOver.mp3");
+  lobbyMusic = loadSound("lobbyMusic.mp3");
 }
 
 function setup() {
@@ -96,10 +102,20 @@ function setup() {
 
   rectMode(CENTER);
 }
+function playLobbyMusic() {
+while (screen == 0) {
+  lobbyMusic.play();
+}
+
+ if (screen != 0) {
+  lobbyMusic.stop();
+ }
+}
 
 function draw() {
   if (screen == 0) {
     menuScreen();
+    playLobbyMusic();
   }
   else if (screen == 1) {
     reactionTime();
@@ -168,8 +184,11 @@ function gameOn(){
   rect(768, 10, 888, 100);
   fill('White');
   text("score = " + score, width / 2, 50);
-  fill('Black');
-  ellipse(x,y,20,20)
+  fill('black');
+  ellipse(x,y,42,42)
+  fill("white");
+  ellipse(x,y,35,35, 67);
+  fill("black");
   rectMode(CENTER);
   rect(mouseX,height-10,50,30)
 	y+= speed;
@@ -197,8 +216,8 @@ function endScreen(){
   button3.show();
   background(150)
   textSize(70);
-  text('GAME OVER', width / 2, 100)
-  text("SCORE = " + score, width / 2, height / 2 -100)
+  text('GAME OVER', width / 2, 100);
+  text("SCORE = " + score, width / 2, height / 2 -100);
   text('click to play again', width / 2, 400);
 }
 
