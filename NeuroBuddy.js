@@ -62,6 +62,10 @@ function preload() {
 
 function setup() {
   lobbyMusic.play();
+
+  if (screen === 5) {
+    gameOver.play();
+  }
   createCanvas(1536, 707);
 
   button0 = createButton("Main Menu!");
@@ -109,6 +113,12 @@ if (screen === 0) {
 }
 else {
   lobbyMusic.stop();
+}
+}
+
+function playGameOver() {
+if (screen === 5) {
+  gameOver.play();
 }
 }
 
@@ -208,6 +218,7 @@ function pickRandom(){
 }
 
 function endScreen(){
+  playGameOver();
   button0.show();
   button1.show();
   button2.show();
@@ -369,13 +380,14 @@ function startMenuScreen() {
   screen = 0;
   button0.hide();
   bigButton.hide();
-  playLobbyMusic();
+  lobbyMusic.play();
 }
 
 function startReactionTime() {
   screen = 1;
   button0.show();
   resetSketch();
+  lobbyMusic.stop();
 }
 
 function startCPSGame() {
@@ -385,24 +397,29 @@ function startCPSGame() {
   bigButton.hide();
   clicks = 0;
   end = false;
+  lobbyMusic.stop();
 }
 
 function startCreatine() {
   screen = 3;
   button0.show();
   bigButton.hide();
+  lobbyMusic.stop();
 }
 
 function startGameOn() {
   screen = 4;
   button0.show();
   bigButton.hide();
+  lobbyMusic.stop();
 }
 
 function startEndScreen() {
   screen = 5;
+  gameOver.play();
   button0.show();
   bigButton.hide();
+  lobbyMusic.stop();
 }
 
 function timer() {
