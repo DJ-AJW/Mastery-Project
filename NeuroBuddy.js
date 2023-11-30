@@ -16,6 +16,7 @@ let Rect;
 var startTime; //the beginning of our clock timer
 var end = false;
 let lobbyMusic;
+let bossMusic;
 
 let bigButton;
 var boxSize = 400;//size of the button to press
@@ -58,6 +59,7 @@ function preload() {
   creatineCollect = loadSound("creatineCollect.mp3");
   gameOver = loadSound("gameOver.mp3");
   lobbyMusic = loadSound("lobbyMusic.mp3");
+  bossMusic = loadSound("bossMusic.mp3");
 }
 
 function setup() {
@@ -308,11 +310,12 @@ function CPSGame() {
   if (clicks == 0) {
     startTime = millis();
   }
-  if (timer() > timeAllowed) {
+  if (timer() == timeAllowed) {
     end = true;
   }
   
   if (end == true) {
+    bossMusic.stop();
     fill("black");
     rect(350,440,300,50);
     fill('white');
@@ -373,6 +376,7 @@ function startMenuScreen() {
   button0.hide();
   bigButton.hide();
   lobbyMusic.play();
+  bossMusic.stop();
 }
 
 function startReactionTime() {
@@ -380,6 +384,7 @@ function startReactionTime() {
   button0.show();
   resetSketch();
   lobbyMusic.stop();
+  bossMusic.stop();
 }
 
 function startCPSGame() {
@@ -390,6 +395,7 @@ function startCPSGame() {
   clicks = 0;
   end = false;
   lobbyMusic.stop();
+  bossMusic.play();
 }
 
 function startCreatine() {
@@ -397,6 +403,7 @@ function startCreatine() {
   button0.show();
   bigButton.hide();
   lobbyMusic.stop();
+  bossMusic.stop();
 }
 
 function startGameOn() {
@@ -404,6 +411,7 @@ function startGameOn() {
   button0.show();
   bigButton.hide();
   lobbyMusic.stop();
+  bossMusic.stop();
 }
 
 function startEndScreen() {
@@ -411,6 +419,7 @@ function startEndScreen() {
   button0.show();
   bigButton.hide();
   lobbyMusic.stop();
+  bossMusic.stop();
 }
 
 function timer() {
