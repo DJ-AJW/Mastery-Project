@@ -27,7 +27,6 @@ var textInstructions; //current instructions
 var startWording = "WAIT!" //language printed when time to start
 var waitWording = "GO!"
 var waitForGreenTimeout, waitForRedTimeout; //vars to handle the timeouts
-let gulp;
 
 let CBUM;
 let background_gym;
