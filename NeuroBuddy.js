@@ -61,6 +61,7 @@ function preload() {
 }
 
 function setup() {
+  lobbyMusic.play();
   createCanvas(1536, 707);
 
   button0 = createButton("Main Menu!");
