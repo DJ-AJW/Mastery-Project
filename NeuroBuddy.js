@@ -16,6 +16,9 @@ let Rect;
 var startTime; //the beginning of our clock timer
 var end = false;
 let lobbyMusic;
+let bossMusic;
+let bananaMusic;
+let surprise;
 
 let bigButton;
 var boxSize = 400;//size of the button to press
@@ -45,7 +48,6 @@ var speed = 2;
 var score= 0;
 let creatineCollect;
 let gameOver;
-let creatineMusic;
 
 function preload() {
   img = loadImage('bicep gif.gif');
@@ -59,8 +61,9 @@ function preload() {
   creatineCollect = loadSound("creatineCollect.mp3");
   gameOver = loadSound("gameOver.mp3");
   lobbyMusic = loadSound("lobbyMusic.mp3");
-  gulp = loadSound("gulp.mp3");
-  creatineMusic = loadSound("creatineMusic.mp3");
+  bossMusic = loadSound("bossMusic.mp3");
+  bananaMusic = loadSound("bananaMusic.mp3");
+  surprise = loadSound("surprise.mp3");
 }
 
 function setup() {
@@ -107,14 +110,6 @@ function setup() {
   rectMode(CENTER);
 }
 
-function playLobbyMusic() {
-if (screen === 0) {
-  lobbyMusic.play();
-}
-else {
-  lobbyMusic.stop();
-}
-}
 
 function draw() {
   if (screen == 0) {
@@ -197,7 +192,6 @@ function gameOn(){
   if(y>height){
   	screen =5;
     gameOver.play();
-    creatineMusic.stop();
 	 }
   if(y>height-10 && x>mouseX-20 && x<mouseX+20){
   	y=-20;
@@ -231,7 +225,6 @@ function mousePressed(){
   	screen=4
   }else if(screen==5){
   	screen=3
-    creatineMusic.play();
   }
 }
 
@@ -248,7 +241,10 @@ function reactionTime() {
   bigButton.html(textInstructions); //puts the correct text in the button
   bigButton.style('font-family',"pixelFont");
   if (addpic) {
-    bigButton.html(`<img src="Chad_Banana.png" width="400" height="500"/>`)
+    bigButton.html(`<img src="Chad_Banana.png" width="400" height="500"/>`);
+    if (surprise.isPlaying() == false){ 
+      surprise.play();
+    }
   }
   let col = color(rBox, gBox, bBox); //sets the button's color
   fill(0);  
@@ -260,7 +256,7 @@ function reactionTime() {
   text("Your reaction times in milliseconds: " + resultTimes, 200, 500 , 250, 420);
 
   textSize(32);
-  text("Click The Box Once A Banana Appears!", width / 2, height / 9);
+  text("Click The Box Once A Bananana Appears!", width / 2, height / 9);
 
 
   end = false;//lets our code know the countdown hasn't ended yet
@@ -313,11 +309,12 @@ function CPSGame() {
   if (clicks == 0) {
     startTime = millis();
   }
-  if (timer() > timeAllowed) {
+  if (timer() == timeAllowed) {
     end = true;
   }
   
   if (end == true) {
+    bossMusic.stop();
     fill("black");
     rect(350,440,300,50);
     fill('white');
@@ -378,18 +375,22 @@ function startMenuScreen() {
   button0.hide();
   bigButton.hide();
   lobbyMusic.play();
-  creatineMusic.stop();
+  bossMusic.stop();
+  bananaMusic.stop();
 }
 
 function startReactionTime() {
+  bananaMusic.stop();
   screen = 1;
   button0.show();
   resetSketch();
   lobbyMusic.stop();
-  creatineMusic.stop();
+  bossMusic.stop();
+  bananaMusic.play();
 }
 
 function startCPSGame() {
+  bossMusic.stop();
   screen = 2;
   button0.show();
   health = 100;
@@ -397,7 +398,8 @@ function startCPSGame() {
   clicks = 0;
   end = false;
   lobbyMusic.stop();
-  creatineMusic.stop();
+  bossMusic.play();
+  bananaMusic.stop();
 }
 
 function startCreatine() {
@@ -405,6 +407,8 @@ function startCreatine() {
   button0.show();
   bigButton.hide();
   lobbyMusic.stop();
+  bossMusic.stop();
+  bananaMusic.stop();
 }
 
 function startGameOn() {
@@ -412,7 +416,8 @@ function startGameOn() {
   button0.show();
   bigButton.hide();
   lobbyMusic.stop();
-  creatineMusic.play();
+  bossMusic.stop();
+  bananaMusic.stop();
 }
 
 function startEndScreen() {
@@ -420,7 +425,8 @@ function startEndScreen() {
   button0.show();
   bigButton.hide();
   lobbyMusic.stop();
-  creatineMusic.stop();
+  bossMusic.stop();
+  bananaMusic.stop();
 }
 
 function timer() {
@@ -452,7 +458,7 @@ function resetSketch() {
   bigButton.mousePressed(testButton); //when bigButton is pushed, run function testButton
   if (addpic){
   bigButton.elt.innerHTML += `<img src="Chad_Banana.jpeg" />`
-  console.log("Draw")
+  surprise.play();
  }
 }
 
