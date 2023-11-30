@@ -262,7 +262,7 @@ function reactionTime() {
   text("Your reaction times in milliseconds: " + resultTimes, 200, 500 , 250, 420);
 
   textSize(32);
-  text("Click The Box Once A Bananana Appears!", width / 2, height / 9);
+  text("Click The Box Once A Banana Appears!", width / 2, height / 9);
 
 
   end = false;//lets our code know the countdown hasn't ended yet
