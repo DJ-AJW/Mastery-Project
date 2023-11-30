@@ -17,6 +17,7 @@ var startTime; //the beginning of our clock timer
 var end = false;
 let lobbyMusic;
 let bossMusic;
+let cbumLose;
 let bananaMusic;
 let surprise;
 
@@ -48,6 +49,7 @@ var speed = 2;
 var score= 0;
 let creatineCollect;
 let gameOver;
+let creatineMusic;
 
 function preload() {
   img = loadImage('bicep gif.gif');
@@ -64,6 +66,8 @@ function preload() {
   bossMusic = loadSound("bossMusic.mp3");
   bananaMusic = loadSound("bananaMusic.mp3");
   surprise = loadSound("surprise.mp3");
+  cbumLose = loadSound("mixkit-player-losing-or-failing-2042.wav");
+  creatineMusic = loadSound("creatineMusic.mp3");
 }
 
 function setup() {
@@ -192,6 +196,7 @@ function gameOn(){
   if(y>height){
   	screen =5;
     gameOver.play();
+    creatineMusic.stop();
 	 }
   if(y>height-10 && x>mouseX-20 && x<mouseX+20){
   	y=-20;
@@ -225,6 +230,7 @@ function mousePressed(){
   	screen=4
   }else if(screen==5){
   	screen=3
+    creatineMusic.play();
   }
 }
 
@@ -311,6 +317,7 @@ function CPSGame() {
   }
   if (timer() == timeAllowed) {
     end = true;
+    cbumLose.play();
   }
   
   if (end == true) {
@@ -377,6 +384,7 @@ function startMenuScreen() {
   lobbyMusic.play();
   bossMusic.stop();
   bananaMusic.stop();
+  creatineMusic.stop();
 }
 
 function startReactionTime() {
@@ -387,6 +395,7 @@ function startReactionTime() {
   lobbyMusic.stop();
   bossMusic.stop();
   bananaMusic.play();
+  creatineMusic.stop();
 }
 
 function startCPSGame() {
@@ -400,6 +409,7 @@ function startCPSGame() {
   lobbyMusic.stop();
   bossMusic.play();
   bananaMusic.stop();
+  creatineMusic.stop();
 }
 
 function startCreatine() {
@@ -409,6 +419,7 @@ function startCreatine() {
   lobbyMusic.stop();
   bossMusic.stop();
   bananaMusic.stop();
+  creatineMusic.play();
 }
 
 function startGameOn() {
@@ -418,6 +429,7 @@ function startGameOn() {
   lobbyMusic.stop();
   bossMusic.stop();
   bananaMusic.stop();
+  creatineMusic.play();
 }
 
 function startEndScreen() {
@@ -427,6 +439,7 @@ function startEndScreen() {
   lobbyMusic.stop();
   bossMusic.stop();
   bananaMusic.stop();
+  creatineMusic.stop();
 }
 
 function timer() {
