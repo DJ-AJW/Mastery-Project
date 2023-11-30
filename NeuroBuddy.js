@@ -59,8 +59,12 @@ function preload() {
   creatineCollect = loadSound("creatineCollect.mp3");
   gameOver = loadSound("gameOver.mp3");
   lobbyMusic = loadSound("lobbyMusic.mp3");
+<<<<<<< Updated upstream
     bossMusic = loadSound("bossMusic.mp3");
     CbumLose = loadSound("mixkit-player-losing-or-failing-2042.wav");
+=======
+  CbumLose = loadSound("mixkit-player-losing-or-failing-2042.wav");
+>>>>>>> Stashed changes
 }
 
 function setup() {
@@ -106,14 +110,7 @@ function setup() {
 
   rectMode(CENTER);
 }
-function playLobbyMusic() {
-if (screen === 0) {
-  lobbyMusic.play();
-}
-else {
-  lobbyMusic.stop();
-}
-}
+
 
 
 function draw() {
@@ -314,7 +311,11 @@ function CPSGame() {
   if (timer() == timeAllowed) {
     end = true;
     CbumLose.play();
+<<<<<<< Updated upstream
    }
+=======
+  }
+>>>>>>> Stashed changes
   
   if (end == true) {
     bossMusic.stop();
