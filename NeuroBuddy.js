@@ -62,10 +62,6 @@ function preload() {
 
 function setup() {
   lobbyMusic.play();
-
-  if (screen === 5) {
-    gameOver.play();
-  }
   createCanvas(1536, 707);
 
   button0 = createButton("Main Menu!");
@@ -116,11 +112,6 @@ else {
 }
 }
 
-function playGameOver() {
-if (screen === 5) {
-  gameOver.play();
-}
-}
 
 function draw() {
   if (screen == 0) {
@@ -202,11 +193,13 @@ function gameOn(){
 	y+= speed;
   if(y>height){
   	screen =5;
+    gameOver.play();
 	 }
   if(y>height-10 && x>mouseX-20 && x<mouseX+20){
   	y=-20;
     speed+=.5;
     score+= 1;
+    creatineCollect.play();
   }
 	if(y==-20){
   	pickRandom();
@@ -218,7 +211,6 @@ function pickRandom(){
 }
 
 function endScreen(){
-  playGameOver();
   button0.show();
   button1.show();
   button2.show();
@@ -416,7 +408,6 @@ function startGameOn() {
 
 function startEndScreen() {
   screen = 5;
-  gameOver.play();
   button0.show();
   bigButton.hide();
   lobbyMusic.stop();
