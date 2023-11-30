@@ -103,19 +103,17 @@ function setup() {
   rectMode(CENTER);
 }
 function playLobbyMusic() {
-while (screen == 0) {
+if (screen === 0) {
   lobbyMusic.play();
 }
-
- if (screen != 0) {
+else {
   lobbyMusic.stop();
- }
+}
 }
 
 function draw() {
   if (screen == 0) {
     menuScreen();
-    playLobbyMusic();
   }
   else if (screen == 1) {
     reactionTime();
@@ -171,7 +169,6 @@ function startScreen() {
   fill("white");
   text('click to start', width / 2, height / 2 );
   reset();
-  
 }
 
 function gameOn(){
@@ -371,6 +368,7 @@ function startMenuScreen() {
   screen = 0;
   button0.hide();
   bigButton.hide();
+  playLobbyMusic();
 }
 
 function startReactionTime() {
