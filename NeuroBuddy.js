@@ -16,7 +16,6 @@ let Rect;
 var startTime; //the beginning of our clock timer
 var end = false;
 let lobbyMusic;
-let bossMusic;
 
 let bigButton;
 var boxSize = 400;//size of the button to press
@@ -28,6 +27,7 @@ var textInstructions; //current instructions
 var startWording = "WAIT!" //language printed when time to start
 var waitWording = "GO!"
 var waitForGreenTimeout, waitForRedTimeout; //vars to handle the timeouts
+let gulp;
 
 let CBUM;
 let background_gym;
@@ -46,6 +46,7 @@ var speed = 2;
 var score= 0;
 let creatineCollect;
 let gameOver;
+let creatineMusic;
 
 function preload() {
   img = loadImage('bicep gif.gif');
@@ -59,12 +60,8 @@ function preload() {
   creatineCollect = loadSound("creatineCollect.mp3");
   gameOver = loadSound("gameOver.mp3");
   lobbyMusic = loadSound("lobbyMusic.mp3");
-<<<<<<< Updated upstream
-    bossMusic = loadSound("bossMusic.mp3");
-    CbumLose = loadSound("mixkit-player-losing-or-failing-2042.wav");
-=======
-  CbumLose = loadSound("mixkit-player-losing-or-failing-2042.wav");
->>>>>>> Stashed changes
+  gulp = loadSound("gulp.mp3");
+  creatineMusic = loadSound("creatineMusic.mp3");
 }
 
 function setup() {
@@ -111,7 +108,14 @@ function setup() {
   rectMode(CENTER);
 }
 
-
+function playLobbyMusic() {
+if (screen === 0) {
+  lobbyMusic.play();
+}
+else {
+  lobbyMusic.stop();
+}
+}
 
 function draw() {
   if (screen == 0) {
@@ -194,6 +198,7 @@ function gameOn(){
   if(y>height){
   	screen =5;
     gameOver.play();
+    creatineMusic.stop();
 	 }
   if(y>height-10 && x>mouseX-20 && x<mouseX+20){
   	y=-20;
@@ -227,6 +232,7 @@ function mousePressed(){
   	screen=4
   }else if(screen==5){
   	screen=3
+    creatineMusic.play();
   }
 }
 
@@ -255,7 +261,7 @@ function reactionTime() {
   text("Your reaction times in milliseconds: " + resultTimes, 200, 500 , 250, 420);
 
   textSize(32);
-  text("Click The Box Once A Bananana Appears!", width / 2, height / 9);
+  text("Click The Box Once A Banana Appears!", width / 2, height / 9);
 
 
   end = false;//lets our code know the countdown hasn't ended yet
@@ -308,17 +314,11 @@ function CPSGame() {
   if (clicks == 0) {
     startTime = millis();
   }
-  if (timer() == timeAllowed) {
+  if (timer() > timeAllowed) {
     end = true;
-    CbumLose.play();
-<<<<<<< Updated upstream
-   }
-=======
   }
->>>>>>> Stashed changes
   
   if (end == true) {
-    bossMusic.stop();
     fill("black");
     rect(350,440,300,50);
     fill('white');
@@ -379,7 +379,7 @@ function startMenuScreen() {
   button0.hide();
   bigButton.hide();
   lobbyMusic.play();
-  bossMusic.stop();
+  creatineMusic.stop();
 }
 
 function startReactionTime() {
@@ -387,7 +387,7 @@ function startReactionTime() {
   button0.show();
   resetSketch();
   lobbyMusic.stop();
-  bossMusic.stop();
+  creatineMusic.stop();
 }
 
 function startCPSGame() {
@@ -398,7 +398,7 @@ function startCPSGame() {
   clicks = 0;
   end = false;
   lobbyMusic.stop();
-  bossMusic.play();
+  creatineMusic.stop();
 }
 
 function startCreatine() {
@@ -406,7 +406,6 @@ function startCreatine() {
   button0.show();
   bigButton.hide();
   lobbyMusic.stop();
-  bossMusic.stop();
 }
 
 function startGameOn() {
@@ -414,7 +413,7 @@ function startGameOn() {
   button0.show();
   bigButton.hide();
   lobbyMusic.stop();
-  bossMusic.stop();
+  creatineMusic.play();
 }
 
 function startEndScreen() {
@@ -422,7 +421,7 @@ function startEndScreen() {
   button0.show();
   bigButton.hide();
   lobbyMusic.stop();
-  bossMusic.stop();
+  creatineMusic.stop();
 }
 
 function timer() {
